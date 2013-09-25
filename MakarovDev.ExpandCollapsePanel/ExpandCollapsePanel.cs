@@ -80,10 +80,12 @@ namespace MakarovDev.ExpandCollapsePanel
 
         /// <summary>
         /// Set flag for expand or collapse panel content
-        /// true - expanded, false - collapsed
+        /// (true - expanded, false - collapsed)
         /// </summary>
         [Category("ExpandCollapsePanel")]
-        [Description("Expand or collapse panel content")]
+        [Description("Expand or collapse panel content. " +
+                     "\r\nAttention, for correct work with resizing child controls," +
+                     " please set IsExpanded to \"false\" in your Form class constructor after InitializeComponent method and not in Forms Designer!")]
         [Browsable(true)]
         public bool IsExpanded 
         {

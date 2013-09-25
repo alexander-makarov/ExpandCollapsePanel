@@ -15,6 +15,9 @@ namespace ExpandCollapsePanelDemo
         {
             InitializeComponent();
             expandCollapsePanel1.IsExpanded = false;
+            expandCollapsePanel2.IsExpanded = false;
+            expandCollapsePanel3.IsExpanded = false;
+            expandCollapsePanel4.IsExpanded = false;
         }
 
         private void expandCollapsePanel1_ExpandCollapse(object sender, MakarovDev.ExpandCollapsePanel.ExpandCollapseEventArgs e)
