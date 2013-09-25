@@ -46,10 +46,31 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.expandCollapsePanel4 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.btnCollapseAll = new System.Windows.Forms.Button();
+            this.btnExpandAll = new System.Windows.Forms.Button();
+            this.expandCollapsePanel10 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.button11 = new System.Windows.Forms.Button();
+            this.expandCollapsePanel9 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.expandCollapsePanel8 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.expandCollapsePanel7 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.expandCollapsePanel6 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.expandCollapsePanel5 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
+            this.button3 = new System.Windows.Forms.Button();
             this.expandCollapsePanel1.SuspendLayout();
             this.advancedFlowLayoutPanel1.SuspendLayout();
             this.expandCollapsePanel2.SuspendLayout();
             this.expandCollapsePanel3.SuspendLayout();
+            this.expandCollapsePanel4.SuspendLayout();
+            this.expandCollapsePanel10.SuspendLayout();
+            this.expandCollapsePanel9.SuspendLayout();
+            this.expandCollapsePanel8.SuspendLayout();
+            this.expandCollapsePanel7.SuspendLayout();
+            this.expandCollapsePanel6.SuspendLayout();
+            this.expandCollapsePanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // expandCollapsePanel1
@@ -105,7 +126,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(46, 103);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(57, 17);
+            this.checkBox1.Size = new System.Drawing.Size(60, 19);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "Check";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -117,7 +138,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.Location = new System.Drawing.Point(34, 140);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(805, 54);
+            this.button6.Size = new System.Drawing.Size(839, 54);
             this.button6.TabIndex = 1;
             this.button6.Text = "Buttons with acnhors";
             this.button6.UseVisualStyleBackColor = true;
@@ -186,7 +207,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(34, 82);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(805, 200);
+            this.listView1.Size = new System.Drawing.Size(839, 200);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -208,12 +229,178 @@
             // expandCollapsePanel4
             // 
             this.expandCollapsePanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.expandCollapsePanel4.IsExpanded = false;
+            this.expandCollapsePanel4.Controls.Add(this.btnCollapseAll);
+            this.expandCollapsePanel4.Controls.Add(this.btnExpandAll);
+            this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel10);
+            this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel9);
+            this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel8);
+            this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel7);
+            this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel6);
+            this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel5);
+            this.expandCollapsePanel4.IsExpanded = true;
             this.expandCollapsePanel4.Location = new System.Drawing.Point(3, 542);
             this.expandCollapsePanel4.Name = "expandCollapsePanel4";
-            this.expandCollapsePanel4.Size = new System.Drawing.Size(800, 46);
+            this.expandCollapsePanel4.Size = new System.Drawing.Size(800, 319);
             this.expandCollapsePanel4.TabIndex = 0;
-            this.expandCollapsePanel4.Text = "expandCollapsePanel4";
+            this.expandCollapsePanel4.Text = "B...uttons";
+            // 
+            // btnCollapseAll
+            // 
+            this.btnCollapseAll.Location = new System.Drawing.Point(142, 45);
+            this.btnCollapseAll.Name = "btnCollapseAll";
+            this.btnCollapseAll.Size = new System.Drawing.Size(90, 29);
+            this.btnCollapseAll.TabIndex = 2;
+            this.btnCollapseAll.Text = "Collapse All";
+            this.btnCollapseAll.UseVisualStyleBackColor = true;
+            this.btnCollapseAll.Click += new System.EventHandler(this.btnCollapseAll_Click);
+            // 
+            // btnExpandAll
+            // 
+            this.btnExpandAll.Location = new System.Drawing.Point(46, 45);
+            this.btnExpandAll.Name = "btnExpandAll";
+            this.btnExpandAll.Size = new System.Drawing.Size(90, 29);
+            this.btnExpandAll.TabIndex = 2;
+            this.btnExpandAll.Text = "Expand All";
+            this.btnExpandAll.UseVisualStyleBackColor = true;
+            this.btnExpandAll.Click += new System.EventHandler(this.btnExpandAll_Click);
+            // 
+            // expandCollapsePanel10
+            // 
+            this.expandCollapsePanel10.Controls.Add(this.button11);
+            this.expandCollapsePanel10.IsExpanded = true;
+            this.expandCollapsePanel10.Location = new System.Drawing.Point(515, 209);
+            this.expandCollapsePanel10.Name = "expandCollapsePanel10";
+            this.expandCollapsePanel10.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel10.TabIndex = 1;
+            this.expandCollapsePanel10.Text = "just a button";
+            // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button11.Location = new System.Drawing.Point(50, 44);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(169, 45);
+            this.button11.TabIndex = 1;
+            this.button11.Text = "I\'m the button";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // expandCollapsePanel9
+            // 
+            this.expandCollapsePanel9.Controls.Add(this.button10);
+            this.expandCollapsePanel9.IsExpanded = true;
+            this.expandCollapsePanel9.Location = new System.Drawing.Point(287, 209);
+            this.expandCollapsePanel9.Name = "expandCollapsePanel9";
+            this.expandCollapsePanel9.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel9.TabIndex = 1;
+            this.expandCollapsePanel9.Text = "just a button";
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.Location = new System.Drawing.Point(50, 44);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(169, 45);
+            this.button10.TabIndex = 1;
+            this.button10.Text = "I\'m the button";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // expandCollapsePanel8
+            // 
+            this.expandCollapsePanel8.Controls.Add(this.button9);
+            this.expandCollapsePanel8.IsExpanded = true;
+            this.expandCollapsePanel8.Location = new System.Drawing.Point(45, 209);
+            this.expandCollapsePanel8.Name = "expandCollapsePanel8";
+            this.expandCollapsePanel8.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel8.TabIndex = 1;
+            this.expandCollapsePanel8.Text = "just a button";
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.Location = new System.Drawing.Point(50, 44);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(169, 45);
+            this.button9.TabIndex = 1;
+            this.button9.Text = "I\'m the button";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // expandCollapsePanel7
+            // 
+            this.expandCollapsePanel7.Controls.Add(this.button8);
+            this.expandCollapsePanel7.IsExpanded = true;
+            this.expandCollapsePanel7.Location = new System.Drawing.Point(515, 98);
+            this.expandCollapsePanel7.Name = "expandCollapsePanel7";
+            this.expandCollapsePanel7.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel7.TabIndex = 1;
+            this.expandCollapsePanel7.Text = "just a button";
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Location = new System.Drawing.Point(50, 44);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(169, 45);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "I\'m the button";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // expandCollapsePanel6
+            // 
+            this.expandCollapsePanel6.Controls.Add(this.button7);
+            this.expandCollapsePanel6.IsExpanded = true;
+            this.expandCollapsePanel6.Location = new System.Drawing.Point(287, 98);
+            this.expandCollapsePanel6.Name = "expandCollapsePanel6";
+            this.expandCollapsePanel6.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel6.TabIndex = 1;
+            this.expandCollapsePanel6.Text = "just a button";
+            // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.Location = new System.Drawing.Point(50, 44);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(169, 45);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "I\'m the button";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // expandCollapsePanel5
+            // 
+            this.expandCollapsePanel5.Controls.Add(this.button3);
+            this.expandCollapsePanel5.IsExpanded = true;
+            this.expandCollapsePanel5.Location = new System.Drawing.Point(45, 98);
+            this.expandCollapsePanel5.Name = "expandCollapsePanel5";
+            this.expandCollapsePanel5.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel5.TabIndex = 1;
+            this.expandCollapsePanel5.Text = "just a button";
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(50, 44);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(169, 45);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "I\'m the button";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Demo
             // 
@@ -230,6 +417,20 @@
             this.expandCollapsePanel2.PerformLayout();
             this.expandCollapsePanel3.ResumeLayout(false);
             this.expandCollapsePanel3.PerformLayout();
+            this.expandCollapsePanel4.ResumeLayout(false);
+            this.expandCollapsePanel4.PerformLayout();
+            this.expandCollapsePanel10.ResumeLayout(false);
+            this.expandCollapsePanel10.PerformLayout();
+            this.expandCollapsePanel9.ResumeLayout(false);
+            this.expandCollapsePanel9.PerformLayout();
+            this.expandCollapsePanel8.ResumeLayout(false);
+            this.expandCollapsePanel8.PerformLayout();
+            this.expandCollapsePanel7.ResumeLayout(false);
+            this.expandCollapsePanel7.PerformLayout();
+            this.expandCollapsePanel6.ResumeLayout(false);
+            this.expandCollapsePanel6.PerformLayout();
+            this.expandCollapsePanel5.ResumeLayout(false);
+            this.expandCollapsePanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -254,6 +455,20 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private MakarovDev.ExpandCollapsePanel.AdvancedFlowLayoutPanel advancedFlowLayoutPanel1;
         private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel4;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCollapseAll;
+        private System.Windows.Forms.Button btnExpandAll;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel10;
+        private System.Windows.Forms.Button button11;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel9;
+        private System.Windows.Forms.Button button10;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel8;
+        private System.Windows.Forms.Button button9;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel7;
+        private System.Windows.Forms.Button button8;
+        private MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel expandCollapsePanel6;
+        private System.Windows.Forms.Button button7;
     }
 }
 

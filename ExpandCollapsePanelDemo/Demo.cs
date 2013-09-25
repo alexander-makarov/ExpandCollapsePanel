@@ -40,5 +40,30 @@ namespace ExpandCollapsePanelDemo
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExpandAll_Click(object sender, EventArgs e)
+        {
+            expandCollapsePanel5.IsExpanded = true;
+            expandCollapsePanel6.IsExpanded = true;
+            expandCollapsePanel7.IsExpanded = true;
+            expandCollapsePanel8.IsExpanded = true;
+            expandCollapsePanel9.IsExpanded = true;
+            expandCollapsePanel10.IsExpanded = true;
+        }
+
+        private void btnCollapseAll_Click(object sender, EventArgs e)
+        {
+            expandCollapsePanel5.IsExpanded = false;
+            expandCollapsePanel6.IsExpanded = false;
+            expandCollapsePanel7.IsExpanded = false;
+            expandCollapsePanel8.IsExpanded = false;
+            expandCollapsePanel9.IsExpanded = false;
+            expandCollapsePanel10.IsExpanded = false;
+        }
     }
 }

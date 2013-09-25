@@ -44,7 +44,11 @@ namespace MakarovDev.ExpandCollapsePanel
         public bool IsExpanded
         {
             get { return _btnExpandCollapse.IsExpanded; }
-            set { _btnExpandCollapse.IsExpanded = value; }
+            set 
+            { 
+                if(_btnExpandCollapse.IsExpanded != value)
+                    _btnExpandCollapse.IsExpanded = value; 
+            }
         }
 
         /// <summary>
