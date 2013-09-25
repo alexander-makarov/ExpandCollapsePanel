@@ -9,71 +9,78 @@ using System.Windows.Forms;
 namespace MakarovDev.ExpandCollapsePanel
 {
     /// <summary>
-    /// Простой разворачиваемый/сворачиваемый контейнер (панель)
+    /// The ExpandCollapsePanel control displays a header that has a collapsible window that displays content.
     /// </summary>
     [Designer(typeof(ExpandCollapsePanelDesigner))]
     public partial class ExpandCollapsePanel : Panel
     {
         /// <summary>
-        /// Высота панели в развёрнутом состоянии
+        /// Last stored size of panel's parent control
+        /// <remarks>used for handling panel's Anchor property sets to Bottom when panel collapsed
+        /// in OnSizeChanged method</remarks>
+        /// </summary>
+        private Size _previousParentSize = Size.Empty;
+
+        /// <summary>
+        /// Height of panel in expanded state
         /// </summary>
         private int _expandedHeight;
 
         /// <summary>
-        /// Высота панели в свёрнутом состоянии
+        /// Height of panel in collapsed state
         /// </summary>
         private readonly int _collapsedHeight;
 
         /// <summary>
-        /// Конструктор
+        /// Constructor
         /// </summary>
         public ExpandCollapsePanel()
         {
             InitializeComponent();
 
-            // при сворачивании подгоняем высоту панели под размер кнопки:
+            // make collapsed height equals to fit expand-collapse button
             _collapsedHeight = _btnExpandCollapse.Location.Y + _btnExpandCollapse.Size.Height + _btnExpandCollapse.Margin.Bottom;
-            
-            // сразу отмасштабируем вручную кнопку сокрытия раскрытия панели
+
+            // right away manually scale expand-collapse button for filling the horizontal space of panel:
             _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right,
                          _btnExpandCollapse.Height);
 
-            // несмотря на то что размер мы проставляем вручную, задания якорей с автосайзом, обеспечивает правильную прорисовку в дизайнере форм
+            // in spite of we always manually scale button, setting Anchor and AutoSize properties provide correct redraw of control in forms designer window
             _btnExpandCollapse.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             _btnExpandCollapse.AutoSize = true;
 
-            // начальное состояние панели - развернута
+            // initial state of panel - expanded
             _btnExpandCollapse.IsExpanded = true;
-            // подписываемся на все следующие изменения состояния по клику на кнопке:
+            // subscribe for button expand-collapse state changed event
             _btnExpandCollapse.ExpandCollapse += BtnExpandCollapseExpandCollapse;
          
         }
 
         /// <summary>
-        /// 
+        /// Handle button expand-collapse state changed event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnExpandCollapseExpandCollapse(object sender, ExpandCollapseEventArgs e)
         {
-            if (e.IsExpanded)
+            if (e.IsExpanded) // if button is expanded now
             {
-                Expand();
+                Expand(); // expand the panel
             }
             else
             {
-                Collapse();
+                Collapse(); // collapse the panel
             }
 
-            // Событие свёртывания/разворачивания панели
+            // Retrieve expand-collapse state changed event for panel
             EventHandler<ExpandCollapseEventArgs> handler = ExpandCollapse;
             if (handler != null)
                 handler(this, e);
         }
 
         /// <summary>
-        /// Флаг. true - контейнер развёрнут. false - контейнер свёрнут. 
-        /// Установка флага вызывает свёртывание/развёртывание контейнера
+        /// Set flag for expand or collapse panel content
+        /// true - expanded, false - collapsed
         /// </summary>
         [Category("ExpandCollapsePanel")]
         [Description("Expand or collapse panel content")]
@@ -85,7 +92,7 @@ namespace MakarovDev.ExpandCollapsePanel
         }
 
         /// <summary>
-        /// Заголовок
+        /// Header of panel
         /// </summary>
         [Category("ExpandCollapsePanel")]
         [Description("Header")]
@@ -118,7 +125,7 @@ namespace MakarovDev.ExpandCollapsePanel
         /// </summary>
         protected virtual void Expand()
         {
-            // Установка нового размера панели
+            // resize panel
             Size = new Size(Size.Width, _expandedHeight);
         }
 
@@ -127,50 +134,43 @@ namespace MakarovDev.ExpandCollapsePanel
         /// </summary>
         protected virtual void Collapse()
         {
-            // перед тем как свернуть запоминаем высоту панели
+            // store current panel height in expanded state
             _expandedHeight = Size.Height;
 
-            // Установка нового размера панели
+            // resize panel
             Size = new Size(Size.Width, _collapsedHeight);
         }
 
-        private Size _previousSize = Size.Empty;
-        private Size _previousParentSize = Size.Empty;
 
         /// <summary>
-        /// Реакция на изменение размера панели
+        /// Handle panel resize event
         /// </summary>
         /// <param name="e"></param>
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
 
-            // отмасштабируем вручную кнопку сокрытия раскрытия панели
+            // we always manually scale expand-collapse button for filling the horizontal space of panel:
             _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right,
                 _btnExpandCollapse.Height);
-            
-            #region Anchor to Bottom handling for collapsed panel
 
-            int height = Size.Height;
+            #region Handling panel's Anchor property sets to Bottom when panel collapsed
+
             if (!IsExpanded // if panel collapsed
                 && ((Anchor & AnchorStyles.Bottom) != 0) //and panel's Anchor property sets to Bottom
                 && Size.Height != _collapsedHeight // and panel height is changed (it could happens only if parent control just has resized)
                 && Parent != null) // and panel has the parent control
             {
-                _expandedHeight += Parent.Height - _previousParentSize.Height;//Size.Height - _previousSize.Height;
-                // при сворачивании подгоняем высоту панели под размер кнопки:
-                // Высота рассчитывается исходя из высоты кнопки
-                height = _collapsedHeight;
+                // main, calculate the parent control resize diff and add it to expandedHeight value:
+                _expandedHeight += Parent.Height - _previousParentSize.Height;
+
+                // reset resized height (by base.OnSizeChanged anchor.Bottom handling) to collapsedHeight value:
+                Size = new Size(Size.Width, _collapsedHeight);
             }
-            _previousSize = Size;
+
+            // store previous size of parent control (however we need only height)
             if(Parent != null)
                 _previousParentSize = Parent.Size;
-
-            if (Size.Height != height)
-            {
-                // Установка нового размера панели
-                Size = new Size(Size.Width, height);
-            }
             #endregion
         }
 
