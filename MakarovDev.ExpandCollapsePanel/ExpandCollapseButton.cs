@@ -61,6 +61,37 @@ namespace MakarovDev.ExpandCollapsePanel
         }
 
         /// <summary>
+        /// Font used for displays header text
+        /// </summary>
+        public override Font Font
+        {
+            get
+            {
+                return lblHeader.Font;
+            }
+            set
+            {
+                lblHeader.Font = value;
+            }
+        }
+
+        /// <summary>
+        /// Foreground color used for displays header text
+        /// </summary>
+        public override Color ForeColor
+        {
+            get
+            {
+                return lblHeader.ForeColor;
+            }
+            set
+            {
+                lblHeader.ForeColor = value;
+            }
+        }
+
+
+        /// <summary>
         /// Occurs when the button has expanded or collapsed
         /// </summary>
         [Category("ExpandCollapseButton")]

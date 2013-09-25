@@ -31,6 +31,89 @@ namespace MakarovDev.ExpandCollapsePanel
         /// </summary>
         private readonly int _collapsedHeight;
 
+
+        /// <summary>
+        /// Set flag for expand or collapse panel content
+        /// (true - expanded, false - collapsed)
+        /// </summary>
+        [Category("ExpandCollapsePanel")]
+        [Description("Expand or collapse panel content. " +
+                     "\r\nAttention, for correct work with resizing child controls," +
+                     " please set IsExpanded to \"false\" in code (for example in your Form class constructor after InitializeComponent method) and not in Forms Designer!")]
+        [Browsable(true)]
+        public bool IsExpanded
+        {
+            get { return _btnExpandCollapse.IsExpanded; }
+            set { _btnExpandCollapse.IsExpanded = value; }
+        }
+
+        /// <summary>
+        /// Header of panel
+        /// </summary>
+        [Category("ExpandCollapsePanel")]
+        [Description("Header")]
+        [Browsable(true)]
+        public override string Text
+        {
+            get { return _btnExpandCollapse.Text; }
+            set { _btnExpandCollapse.Text = value; }
+        }
+
+        /// <summary>
+        /// AutoScroll property
+        /// <remarks>Overridden only to hide from designer as mindless and useless</remarks>
+        /// </summary>
+        [Browsable(false)]
+        public override bool AutoScroll
+        {
+            get
+            {
+                return base.AutoScroll;
+            }
+            set
+            {
+                base.AutoScroll = value;
+            }
+        }
+
+        /// <summary>
+        /// Font used for displays header text
+        /// </summary>
+        public override Font Font
+        {
+            get
+            {
+                return _btnExpandCollapse.Font;
+            }
+            set
+            {
+                _btnExpandCollapse.Font = value;
+            }
+        }
+
+        /// <summary>
+        /// Foreground color used for displays header text
+        /// </summary>
+        public override Color ForeColor
+        {
+            get
+            {
+                return _btnExpandCollapse.ForeColor;
+            }
+            set
+            {
+                _btnExpandCollapse.ForeColor = value;
+            }
+        }
+
+        /// <summary>
+        /// Occurs when the panel has expanded or collapsed
+        /// </summary>
+        [Category("ExpandCollapsePanel")]
+        [Description("Occurs when the panel has expanded or collapsed.")]
+        [Browsable(true)]
+        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse; 
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -77,58 +160,7 @@ namespace MakarovDev.ExpandCollapsePanel
             if (handler != null)
                 handler(this, e);
         }
-
-        /// <summary>
-        /// Set flag for expand or collapse panel content
-        /// (true - expanded, false - collapsed)
-        /// </summary>
-        [Category("ExpandCollapsePanel")]
-        [Description("Expand or collapse panel content. " +
-                     "\r\nAttention, for correct work with resizing child controls," +
-                     " please set IsExpanded to \"false\" in your Form class constructor after InitializeComponent method and not in Forms Designer!")]
-        [Browsable(true)]
-        public bool IsExpanded 
-        {
-            get { return _btnExpandCollapse.IsExpanded; }
-            set { _btnExpandCollapse.IsExpanded = value; }
-        }
-
-        /// <summary>
-        /// Header of panel
-        /// </summary>
-        [Category("ExpandCollapsePanel")]
-        [Description("Header")]
-        [Browsable(true)]
-        public override string Text
-        {
-            get { return _btnExpandCollapse.Text; }
-            set { _btnExpandCollapse.Text = value; }
-        }
-        
-        /// <summary>
-        /// AutoScroll property
-        /// <remarks>Overridden only to hide from designer as mindless and useless</remarks>
-        /// </summary>
-        [Browsable(false)]
-        public override bool AutoScroll
-        {
-            get
-            {
-                return base.AutoScroll;
-            }
-            set
-            {
-                base.AutoScroll = value;
-            }
-        }
-
-        /// <summary>
-        /// Occurs when the panel has expanded or collapsed
-        /// </summary>
-        [Category("ExpandCollapsePanel")]
-        [Description("Occurs when the panel has expanded or collapsed.")]
-        [Browsable(true)]
-        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;  
+ 
 
         /// <summary>
         /// Expand panel content

@@ -14,10 +14,14 @@ namespace ExpandCollapsePanelDemo
         public Demo()
         {
             InitializeComponent();
+
+            // Attention! Unfortunately for correct handling need to set ExpandCollapsePanel control properties in code..
             expandCollapsePanel1.IsExpanded = false;
             expandCollapsePanel2.IsExpanded = false;
             expandCollapsePanel3.IsExpanded = false;
             expandCollapsePanel4.IsExpanded = false;
+
+            expandCollapsePanel1.Font = new Font(FontFamily.GenericSansSerif, 9f, FontStyle.Bold);
         }
 
         private void expandCollapsePanel1_ExpandCollapse(object sender, MakarovDev.ExpandCollapsePanel.ExpandCollapseEventArgs e)
