@@ -18,6 +18,13 @@ namespace ExpandCollapsePanelDemo
             expandCollapsePanel2.IsExpanded = false;
             expandCollapsePanel3.IsExpanded = false;
             expandCollapsePanel4.IsExpanded = false;
+
+            const BorderStyle border = BorderStyle.None;
+            expandCollapsePanel1.BorderStyle = border;
+            expandCollapsePanel2.BorderStyle = border;
+            expandCollapsePanel3.BorderStyle = border;
+            expandCollapsePanel4.BorderStyle = border;
+            advancedFlowLayoutPanel1.BorderStyle = border;
         }
 
         private void expandCollapsePanel1_ExpandCollapse(object sender, MakarovDev.ExpandCollapsePanel.ExpandCollapseEventArgs e)
