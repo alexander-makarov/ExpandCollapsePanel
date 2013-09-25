@@ -144,6 +144,31 @@ namespace MakarovDev.ExpandCollapsePanel
             Size = new Size(Size.Width, _collapsedHeight);
         }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            if (IsExpanded)
+            {
+                var g = e.Graphics;
+                Pen p = new Pen(new HatchBrush(HatchStyle.DashedUpwardDiagonal, Color.Brown));
+                p = SystemPens.ActiveBorder;// Pens.Gray;
+                var ptLeftBorder1 = new Point(20, _btnExpandCollapse.Location.Y + _btnExpandCollapse.Height+5);
+                var ptLeftBorder2 = new Point(ptLeftBorder1.X, ptLeftBorder1.Y + (ClientSize.Height - _btnExpandCollapse.Height - _btnExpandCollapse.Location.Y - _btnExpandCollapse.Margin.Vertical)-5);
+                g.DrawLine(p, ptLeftBorder1, ptLeftBorder2);
+
+                var ptBottomBorder1 = ptLeftBorder2;
+                var ptBottomBorder2 = new Point(ptBottomBorder1.X + _btnExpandCollapse.Width, ptBottomBorder1.Y); //  - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right
+                g.DrawLine(p, ptBottomBorder1, ptBottomBorder2);
+
+                //var ptRightBorder1 = ptBottomBorder2;
+                //var ptRightBorder2 = new Point(ptRightBorder1.X, ptLeftBorder1.Y);
+                //g.DrawLine(p, ptRightBorder1, ptRightBorder2);
+
+                //g.DrawLine(p, ptLeftBorder1, ptRightBorder2);
+                
+            }
+        }
+
 
         /// <summary>
         /// Handle panel resize event
@@ -154,10 +179,29 @@ namespace MakarovDev.ExpandCollapsePanel
             base.OnSizeChanged(e);
 
             // we always manually scale expand-collapse button for filling the horizontal space of panel:
-            _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right,
+            _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right - _btnExpandCollapse.Location.X,
                 _btnExpandCollapse.Height);
 
-            _lblLeftBorder.Size = new Size(_lblLeftBorder.Width, ClientSize.Height - _btnExpandCollapse.Margin.Bottom);
+            Refresh();
+            if (IsExpanded)
+            {
+                //_lblLeftBorder.Visible = true;
+                //_lblLeftBorder.Location = new Point(20, _btnExpandCollapse.Location.Y + _btnExpandCollapse.Height);
+                //_lblLeftBorder.Size = new Size(1, ClientSize.Height - _btnExpandCollapse.Height - _btnExpandCollapse.Location.Y - _btnExpandCollapse.Margin.Vertical);
+
+                //label1.Location = new Point(_lblLeftBorder.Location.X-10, _lblLeftBorder.Location.Y + _lblLeftBorder.Height);
+                //label1.Size = new Size(1, ClientSize.Height - _btnExpandCollapse.Margin.Bottom);
+
+                //_lblBottomBorder.Visible = true;
+                //_lblBottomBorder.Location = new Point(_lblLeftBorder.Location.X, _lblLeftBorder.Location.Y + _lblLeftBorder.Height);
+                //_lblBottomBorder.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right, 1);
+            }
+            else
+            {
+                _lblLeftBorder.Visible = false;
+                _lblBottomBorder.Visible = false;
+                label1.Visible = false;
+            }
 
             #region Handling panel's Anchor property sets to Bottom when panel collapsed
 

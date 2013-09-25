@@ -30,6 +30,8 @@
         {
             this._btnExpandCollapse = new MakarovDev.ExpandCollapsePanel.ExpandCollapseButton();
             this._lblLeftBorder = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this._lblBottomBorder = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // _btnExpandCollapse
@@ -52,11 +54,35 @@
             this._lblLeftBorder.Enabled = false;
             this._lblLeftBorder.Location = new System.Drawing.Point(20, 50);
             this._lblLeftBorder.Name = "_lblLeftBorder";
-            this._lblLeftBorder.Size = new System.Drawing.Size(1, 227);
+            this._lblLeftBorder.Size = new System.Drawing.Size(10, 227);
             this._lblLeftBorder.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Enabled = false;
+            this.label1.Location = new System.Drawing.Point(411, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(10, 227);
+            this.label1.TabIndex = 1;
+            // 
+            // _lblBottomBorder
+            // 
+            this._lblBottomBorder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this._lblBottomBorder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._lblBottomBorder.Enabled = false;
+            this._lblBottomBorder.Location = new System.Drawing.Point(27, 267);
+            this._lblBottomBorder.Name = "_lblBottomBorder";
+            this._lblBottomBorder.Size = new System.Drawing.Size(378, 10);
+            this._lblBottomBorder.TabIndex = 1;
             // 
             // ExpandCollapsePanel
             // 
+            this.Controls.Add(this._lblBottomBorder);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this._lblLeftBorder);
             this.Controls.Add(this._btnExpandCollapse);
             this.Name = "ExpandCollapsePanel";
@@ -69,5 +95,7 @@
 
         private MakarovDev.ExpandCollapsePanel.ExpandCollapseButton _btnExpandCollapse;
         private System.Windows.Forms.Label _lblLeftBorder;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label _lblBottomBorder;
     }
 }
