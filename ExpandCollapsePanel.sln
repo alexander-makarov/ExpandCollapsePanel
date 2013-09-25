@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakarovDev.ExpandCollapsePanel", "MakarovDev.ExpandCollapsePanel\MakarovDev.ExpandCollapsePanel.csproj", "{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpandCollapsePanelDemo", "ExpandCollapsePanelDemo\ExpandCollapsePanelDemo.csproj", "{46014659-0047-4388-82D0-6DBD861B2C5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46014659-0047-4388-82D0-6DBD861B2C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46014659-0047-4388-82D0-6DBD861B2C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46014659-0047-4388-82D0-6DBD861B2C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46014659-0047-4388-82D0-6DBD861B2C5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

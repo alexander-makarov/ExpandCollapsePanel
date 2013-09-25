@@ -54,11 +54,11 @@ namespace MakarovDev.ExpandCollapsePanel
             }
             else
             {
-                Collaspse();
+                Collapse();
             }
 
             // Событие свёртывания/разворачивания панели
-            EventHandler<ExpandCollapseEventArgs> handler = OnExpandCollapse;
+            EventHandler<ExpandCollapseEventArgs> handler = ExpandCollapse;
             if (handler != null)
                 handler(this, e);
         }
@@ -67,7 +67,9 @@ namespace MakarovDev.ExpandCollapsePanel
         /// Флаг. true - контейнер развёрнут. false - контейнер свёрнут. 
         /// Установка флага вызывает свёртывание/развёртывание контейнера
         /// </summary>
-        [Description("Свёртывание/развёртывание контейнера")]
+        [Category("ExpandCollapsePanel")]
+        [Description("Expand or collapse panel content")]
+        [Browsable(true)]
         public bool IsExpanded 
         {
             get { return _btnExpandCollapse.IsExpanded; }
@@ -77,7 +79,8 @@ namespace MakarovDev.ExpandCollapsePanel
         /// <summary>
         /// Заголовок
         /// </summary>
-        [Description("Заголовок")]
+        [Category("ExpandCollapsePanel")]
+        [Description("Header")]
         [Browsable(true)]
         public override string Text
         {
@@ -86,7 +89,8 @@ namespace MakarovDev.ExpandCollapsePanel
         }
         
         /// <summary>
-        /// Скрыто т.к. выставление в true имеет мало смысла.
+        /// AutoScroll property
+        /// <remarks>Overridden only to hide from designer as mindless and useless</remarks>
         /// </summary>
         [Browsable(false)]
         public override bool AutoScroll
@@ -102,33 +106,35 @@ namespace MakarovDev.ExpandCollapsePanel
         }
 
         /// <summary>
-        /// Развернуть контейнер
+        /// Expand panel content
         /// </summary>
         protected virtual void Expand()
         {
-            // Ширина не изменяется
-            int width = Size.Width;
-            // Высота рассчитывается исходя из сохранённой высоты панели в развёрнутом состоянии
-            int height = _expandedHeight;
             // Установка нового размера панели
-            Size = new Size(width, height);
+            Size = new Size(Size.Width, _expandedHeight);
         }
 
         /// <summary>
-        /// Свернуть контейнер
+        /// Collapse panel content
         /// </summary>
-        protected virtual void Collaspse()
+        protected virtual void Collapse()
         {
             // перед тем как свернуть запоминаем высоту панели
             _expandedHeight = Size.Height;
 
             // при сворачивании подгоняем высоту панели под размер кнопки:
-            // Ширина не изменяется
-            int width = Size.Width;
             // Высота рассчитывается исходя из высоты кнопки
             int height = _btnExpandCollapse.Location.Y + _btnExpandCollapse.Size.Height + _btnExpandCollapse.Margin.Bottom;
+
             // Установка нового размера панели
-            Size = new Size(width, height);
+            Size = new Size(Size.Width, height);
+        }
+
+        private Size _previousSize = Size.Empty;
+        protected override void OnResize(EventArgs eventargs)
+        {
+            base.OnResize(eventargs);
+            //_previousSize = Size;
         }
 
         /// <summary>
@@ -142,11 +148,33 @@ namespace MakarovDev.ExpandCollapsePanel
             // отмасштабируем вручную кнопку сокрытия раскрытия панели
             _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right,
                 _btnExpandCollapse.Height);
+            
+            #region Anchor to Bottom handling for collapsed panel
+
+            int height = Size.Height;
+            if (!IsExpanded && Size.Height != _btnExpandCollapse.Location.Y + _btnExpandCollapse.Size.Height + _btnExpandCollapse.Margin.Bottom)
+            {
+                _expandedHeight += Size.Height - _previousSize.Height;
+                // при сворачивании подгоняем высоту панели под размер кнопки:
+                // Высота рассчитывается исходя из высоты кнопки
+                height = _btnExpandCollapse.Location.Y + _btnExpandCollapse.Size.Height + _btnExpandCollapse.Margin.Bottom;
+            }
+            _previousSize = Size;
+
+            if (Size.Height != height)
+            {
+                // Установка нового размера панели
+                Size = new Size(Size.Width, height);
+            }
+            #endregion
         }
 
         /// <summary>
-        /// Событие: сворачивание/разворачивание панели
+        /// Occurs when the panel has expanded or collapsed
         /// </summary>
-        public event EventHandler<ExpandCollapseEventArgs> OnExpandCollapse;      
+        [Category("ExpandCollapsePanel")]
+        [Description("Occurs when the panel has expanded or collapsed.")]
+        [Browsable(true)]
+        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;      
     }
 }
