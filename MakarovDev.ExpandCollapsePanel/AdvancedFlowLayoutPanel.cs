@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace MakarovDev.ExpandCollapsePanel
 {
@@ -17,6 +18,7 @@ namespace MakarovDev.ExpandCollapsePanel
             foreach (Control c in Controls)
             {
                 FillControlWidth(c);
+
             }
             // Базовая реализация метода
             base.OnSizeChanged(e);
