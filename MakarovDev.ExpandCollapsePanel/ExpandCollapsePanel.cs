@@ -20,11 +20,19 @@ namespace MakarovDev.ExpandCollapsePanel
         private int _expandedHeight;
 
         /// <summary>
+        /// Высота панели в свёрнутом состоянии
+        /// </summary>
+        private readonly int _collapsedHeight;
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         public ExpandCollapsePanel()
         {
             InitializeComponent();
+
+            // при сворачивании подгоняем высоту панели под размер кнопки:
+            _collapsedHeight = _btnExpandCollapse.Location.Y + _btnExpandCollapse.Size.Height + _btnExpandCollapse.Margin.Bottom;
             
             // сразу отмасштабируем вручную кнопку сокрытия раскрытия панели
             _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right,
@@ -122,20 +130,12 @@ namespace MakarovDev.ExpandCollapsePanel
             // перед тем как свернуть запоминаем высоту панели
             _expandedHeight = Size.Height;
 
-            // при сворачивании подгоняем высоту панели под размер кнопки:
-            // Высота рассчитывается исходя из высоты кнопки
-            int height = _btnExpandCollapse.Location.Y + _btnExpandCollapse.Size.Height + _btnExpandCollapse.Margin.Bottom;
-
             // Установка нового размера панели
-            Size = new Size(Size.Width, height);
+            Size = new Size(Size.Width, _collapsedHeight);
         }
 
         private Size _previousSize = Size.Empty;
-        protected override void OnResize(EventArgs eventargs)
-        {
-            base.OnResize(eventargs);
-            //_previousSize = Size;
-        }
+        private Size _previousParentSize = Size.Empty;
 
         /// <summary>
         /// Реакция на изменение размера панели
@@ -152,14 +152,19 @@ namespace MakarovDev.ExpandCollapsePanel
             #region Anchor to Bottom handling for collapsed panel
 
             int height = Size.Height;
-            if (!IsExpanded && Size.Height != _btnExpandCollapse.Location.Y + _btnExpandCollapse.Size.Height + _btnExpandCollapse.Margin.Bottom)
+            if (!IsExpanded // if panel collapsed
+                && ((Anchor & AnchorStyles.Bottom) != 0) //and panel's Anchor property sets to Bottom
+                && Size.Height != _collapsedHeight // and panel height is changed (it could happens only if parent control just has resized)
+                && Parent != null) // and panel has the parent control
             {
-                _expandedHeight += Size.Height - _previousSize.Height;
+                _expandedHeight += Parent.Height - _previousParentSize.Height;//Size.Height - _previousSize.Height;
                 // при сворачивании подгоняем высоту панели под размер кнопки:
                 // Высота рассчитывается исходя из высоты кнопки
-                height = _btnExpandCollapse.Location.Y + _btnExpandCollapse.Size.Height + _btnExpandCollapse.Margin.Bottom;
+                height = _collapsedHeight;
             }
             _previousSize = Size;
+            if(Parent != null)
+                _previousParentSize = Parent.Size;
 
             if (Size.Height != height)
             {
