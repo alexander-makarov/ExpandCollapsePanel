@@ -4,6 +4,7 @@ namespace MakarovDev.ExpandCollapsePanel
 {
     /// <summary>
     /// Designer for the ExpandCollapsePanel control with support for a smart tag panel.
+    /// <remarks>http://msdn.microsoft.com/en-us/library/ms171829.aspx</remarks>
     /// </summary>
     [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
     public class ExpandCollapsePanelDesigner : System.Windows.Forms.Design.ScrollableControlDesigner

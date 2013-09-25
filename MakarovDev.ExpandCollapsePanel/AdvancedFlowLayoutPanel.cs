@@ -4,30 +4,30 @@ using System.Windows.Forms;
 namespace MakarovDev.ExpandCollapsePanel
 {
     /// <summary>
-    /// FlowLayoutPanel с расширенными возможностями
+    /// FlowLayoutPanel with additional utillity behaviour
     /// </summary>
     public class AdvancedFlowLayoutPanel : FlowLayoutPanel
     {
         /// <summary>
-        /// Обработка события изменения размера контрола
+        /// Handle the resize of panel
         /// </summary>
         /// <param name="e"></param>
         protected override void OnSizeChanged(System.EventArgs e)
         {
-            // Подгонка ширины дочерних контролов под ширину контейнера
+            // for each child control
             foreach (Control c in Controls)
             {
-                FillControlWidth(c);
-
+                FillControlWidth(c); // scale the width to fill free horizontal space
             }
-            // Базовая реализация метода
+
+            // get all another resize stuff from base class
             base.OnSizeChanged(e);
         }
 
         /// <summary>
-        /// Установить ширину дочерненго контрола согласно ширине контейнера
+        /// Scale the width to fill free horizontal space of current panel
         /// </summary>
-        /// <param name="c">Контрол, ширина которого устанавливается</param>
+        /// <param name="c">control for scalling</param>
         protected void FillControlWidth(Control c)
         {
             c.Size = new System.Drawing.Size(ClientSize.Width - c.Margin.Left - c.Margin.Right, c.Height);

@@ -123,6 +123,14 @@ namespace MakarovDev.ExpandCollapsePanel
         }
 
         /// <summary>
+        /// Occurs when the panel has expanded or collapsed
+        /// </summary>
+        [Category("ExpandCollapsePanel")]
+        [Description("Occurs when the panel has expanded or collapsed.")]
+        [Browsable(true)]
+        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;  
+
+        /// <summary>
         /// Expand panel content
         /// </summary>
         protected virtual void Expand()
@@ -175,13 +183,5 @@ namespace MakarovDev.ExpandCollapsePanel
                 _previousParentSize = Parent.Size;
             #endregion
         }
-
-        /// <summary>
-        /// Occurs when the panel has expanded or collapsed
-        /// </summary>
-        [Category("ExpandCollapsePanel")]
-        [Description("Occurs when the panel has expanded or collapsed.")]
-        [Browsable(true)]
-        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;      
     }
 }

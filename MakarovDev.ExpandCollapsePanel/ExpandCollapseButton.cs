@@ -1,29 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using MakarovDev.ExpandCollapsePanel;
 
 namespace MakarovDev.ExpandCollapsePanel
 {
+    /// <summary>
+    /// Button with two states: expanded/collapsed
+    /// </summary>
     public partial class ExpandCollapseButton : UserControl
     {
-        private readonly Image _expanded;
-        private readonly Image _collapsed;
         /// <summary>
-        /// Флаг. true - контейнер развёрнут. false - контейнер свёрнут. 
+        /// Image displays expanded state of button
+        /// </summary>
+        private readonly Image _expanded;
+        /// <summary>
+        /// Image displays collapsed state of button
+        /// </summary>
+        private readonly Image _collapsed;
+
+        /// <summary>
+        /// Set flag for expand or collapse button
+        /// (true - expanded, false - collapsed)
         /// </summary>
         private bool _isExpanded;
 
         /// <summary>
-        /// Флаг. true - контейнер развёрнут. false - контейнер свёрнут. 
-        /// Установка флага вызывает свёртывание/развёртывание контейнера
+        /// Set flag for expand or collapse button
+        /// (true - expanded, false - collapsed)
         /// </summary>
-        [Description("Свёртывание/развёртывание контейнера")]
+        [Browsable(true)]
+        [Category("ExpandCollapseButton")]
+        [Description("Expand or collapse button.")]
         public bool IsExpanded
         {
             get { return _isExpanded; }
@@ -35,45 +43,10 @@ namespace MakarovDev.ExpandCollapsePanel
         }
 
         /// <summary>
-        /// Событие: сворачивание/разворачивание
+        /// Header
         /// </summary>
-        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;   
-        
-        public ExpandCollapseButton()
-        {
-            InitializeComponent();
-            _isExpanded = false; // в самом начале состояние - свернуто
-            
-            _collapsed = pictureBox1.Image;
-            
-            _expanded = new Bitmap(pictureBox1.Image);
-            _expanded.RotateFlip(RotateFlipType.Rotate180FlipNone);
-        }
-
-        /// <summary>
-        /// Обрабатываем клики по контролу
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected virtual void OnClick(object sender, EventArgs e)
-        {
-            IsExpanded = !IsExpanded;
-        }
-
-        protected virtual void OnExpandCollapse()
-        {
-            pictureBox1.Image = _isExpanded ? _expanded : _collapsed;
-
-            // Событие развёртывания панели
-            EventHandler<ExpandCollapseEventArgs> handler = ExpandCollapse;
-            if (handler != null)
-                handler(this, new ExpandCollapseEventArgs(_isExpanded));
-        }
-
-        /// <summary>
-        /// Заголовок
-        /// </summary>
-        [Description("Заголовок")]
+        [Category("ExpandCollapseButton")]
+        [Description("Header")]
         [Browsable(true)]
         public override string Text
         {
@@ -85,6 +58,56 @@ namespace MakarovDev.ExpandCollapsePanel
             {
                 lblHeader.Text = value;
             }
+        }
+
+        /// <summary>
+        /// Occurs when the button has expanded or collapsed
+        /// </summary>
+        [Category("ExpandCollapseButton")]
+        [Description("Occurs when the button has expanded or collapsed.")]
+        [Browsable(true)]
+        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;   
+        
+        public ExpandCollapseButton()
+        {
+            InitializeComponent();
+
+            #region initialize readonly expanded/collapsed state bitmaps:
+            // collapsed bitmap:
+            _collapsed = pictureBox1.Image;
+
+            // expanded bitmap is rotated collapsed bitmap:
+            _expanded = new Bitmap(pictureBox1.Image);
+            _expanded.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            #endregion
+
+            // initial state of panel - collapsed
+            _isExpanded = false;
+        }
+
+        /// <summary>
+        /// Handle clicks from PictureBox and Header
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected virtual void OnClick(object sender, EventArgs e)
+        {
+            // just invert current state
+            IsExpanded = !IsExpanded;
+        }
+
+        /// <summary>
+        /// Handle state changing
+        /// </summary>
+        protected virtual void OnExpandCollapse()
+        {
+            // set appropriate bitmap
+            pictureBox1.Image = _isExpanded ? _expanded : _collapsed;
+
+            // and fire the event:
+            EventHandler<ExpandCollapseEventArgs> handler = ExpandCollapse;
+            if (handler != null)
+                handler(this, new ExpandCollapseEventArgs(_isExpanded));
         }
     }
 }

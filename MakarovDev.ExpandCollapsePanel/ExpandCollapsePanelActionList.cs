@@ -6,6 +6,7 @@ namespace MakarovDev.ExpandCollapsePanel
 {
     /// <summary>
     /// DesignerActionList-derived class defines smart tag entries and resultant actions. 
+    /// <remarks>http://msdn.microsoft.com/en-us/library/ms171829.aspx</remarks>
     /// </summary>
     public class ExpandCollapsePanelActionList : System.ComponentModel.Design.DesignerActionList
     {
