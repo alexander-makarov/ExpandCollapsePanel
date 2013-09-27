@@ -14,11 +14,11 @@ namespace MakarovDev.ExpandCollapsePanel
         /// <summary>
         /// Image displays expanded state of button
         /// </summary>
-        private readonly Image _expanded;
+        private Image _expanded;
         /// <summary>
         /// Image displays collapsed state of button
         /// </summary>
-        private readonly Image _collapsed;
+        private Image _collapsed;
 
         /// <summary>
         /// Set flag for expand or collapse button
@@ -104,17 +104,69 @@ namespace MakarovDev.ExpandCollapsePanel
         {
             InitializeComponent();
 
-            #region initialize readonly expanded/collapsed state bitmaps:
+            #region initialize expanded/collapsed state bitmaps:
+            InitButtonStyle(ExpandButtonStyle.Style2);
+            #endregion
+
+            // initial state of panel - collapsed
+            _isExpanded = false;
+        }
+
+        private ExpandButtonStyle _expandButtonStyle = ExpandButtonStyle.Style1;
+        public ExpandButtonStyle ButtonStyle
+        {
+            get { return _expandButtonStyle; }
+            set
+            {
+                if (_expandButtonStyle != value)
+                {
+                    _expandButtonStyle = value;
+                    InitButtonStyle(_expandButtonStyle);
+                }
+            }
+        }
+
+        private void InitButtonStyle(ExpandButtonStyle style)
+        {
+            switch (style)
+            {
+                case ExpandButtonStyle.Style1:
+                    pictureBox1.Image = Properties.Resources._1downarrow1;
+                    break;
+                case ExpandButtonStyle.Style2:
+                    var bmp = Properties.Resources.Upload;
+                    bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    pictureBox1.Image = bmp;
+                    break;
+                case ExpandButtonStyle.Style3:
+                    pictureBox1.Image = Properties.Resources.icon_expand;
+                    break;
+                case ExpandButtonStyle.Style4:
+                    bmp = Properties.Resources.up_256;
+                    bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    pictureBox1.Image = bmp;
+                    break;
+                //case ExpandButtonStyle.Style5:
+                //    bmp = Properties.Resources.icon_collapse2;
+                //    bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                //    pictureBox1.Size = new Size(24,24);
+                //    pictureBox1.Image = bmp;
+                //    break;
+                default:
+                    throw new ArgumentOutOfRangeException("style");
+            }
+
             // collapsed bitmap:
             _collapsed = pictureBox1.Image;
 
             // expanded bitmap is rotated collapsed bitmap:
             _expanded = MakeGrayscale3(pictureBox1.Image);
             _expanded.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            #endregion
+        }
 
-            // initial state of panel - collapsed
-            _isExpanded = false;
+        public enum ExpandButtonStyle
+        {
+            Style1, Style2, Style3, Style4, Style5, Style6
         }
 
         /// <summary>
