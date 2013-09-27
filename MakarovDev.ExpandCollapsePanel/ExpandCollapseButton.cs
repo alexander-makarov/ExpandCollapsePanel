@@ -105,14 +105,26 @@ namespace MakarovDev.ExpandCollapsePanel
             InitializeComponent();
 
             #region initialize expanded/collapsed state bitmaps:
-            InitButtonStyle(ExpandButtonStyle.Style5);
+            InitButtonStyle(ExpandButtonStyle.Circle);
+            InitButtonSize(ExpandButtonSize.Normal);
             #endregion
 
             // initial state of panel - collapsed
             _isExpanded = false;
         }
 
-        private ExpandButtonStyle _expandButtonStyle = ExpandButtonStyle.Style1;
+        #region ExpandButtonStyles
+        /// <summary>
+        /// Visual styles of the expand-collapse button.
+        /// </summary>
+        public enum ExpandButtonStyle
+        {
+            Circle,
+            MagicArrow,
+            Triangle,
+            FatArrow
+        }
+        private ExpandButtonStyle _expandButtonStyle = ExpandButtonStyle.Circle;
 
         /// <summary>
         /// Visual style of the expand-collapse button.
@@ -138,45 +150,22 @@ namespace MakarovDev.ExpandCollapsePanel
 
             switch (_expandButtonStyle)
             {
-                case ExpandButtonStyle.Style1:
-                    pictureBox1.Image = Properties.Resources._1downarrow1;
-                    pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size = new Size(35, 35);
-                    lblLine.Location = new Point(41, 28);
-                    lblHeader.Location = new Point(41, 3);
-                    break;
-                case ExpandButtonStyle.Style2:
+                case ExpandButtonStyle.MagicArrow:
                     var bmp = Properties.Resources.Upload;
                     bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
                     pictureBox1.Image = bmp;
-                    pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size = new Size(35, 35);
-                    lblLine.Location = new Point(41, 28);
-                    lblHeader.Location = new Point(41, 3);
                     break;
-                case ExpandButtonStyle.Style3:
-                    pictureBox1.Image = Properties.Resources.icon_expand;
-                    pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size = new Size(35, 35);
-                    lblLine.Location = new Point(41, 28);
-                    lblHeader.Location = new Point(41, 3);
+                case ExpandButtonStyle.Circle:
+                    bmp = Properties.Resources.icon_expand;
+                    pictureBox1.Image = bmp;
                     break;
-                case ExpandButtonStyle.Style4:
+                case ExpandButtonStyle.Triangle:
+                    pictureBox1.Image = Properties.Resources._1downarrow1;
+                    break;
+                case ExpandButtonStyle.FatArrow:
                     bmp = Properties.Resources.up_256;
                     bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
                     pictureBox1.Image = bmp;
-                    pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size = new Size(35, 35);
-                    lblLine.Location = new Point(41, 28);
-                    lblHeader.Location = new Point(41, 3);
-                    break;
-                case ExpandButtonStyle.Style5:
-                    bmp = Properties.Resources._1downarrow1;
-                    pictureBox1.Image = bmp;
-                    pictureBox1.Location = new Point(0, 3);
-                    pictureBox1.Size = new Size(24, 24);
-                    lblLine.Location = new Point(30, 22);
-                    lblHeader.Location = new Point(30, 3);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("style");
@@ -188,12 +177,72 @@ namespace MakarovDev.ExpandCollapsePanel
             // expanded bitmap is rotated collapsed bitmap:
             _expanded = MakeGrayscale3(pictureBox1.Image);
             _expanded.RotateFlip(RotateFlipType.Rotate180FlipNone);
+
+
+            // finally set appropriate bitmap for current state
+            pictureBox1.Image = _isExpanded ? _expanded : _collapsed;
+        }
+        #endregion ExpandButtonStyles
+
+        #region ExpandButtonStyles
+        /// <summary>
+        /// Size presets of the expand-collapse button.
+        /// </summary>
+        public enum ExpandButtonSize
+        {
+            Normal,
+            Large
+        }
+        private ExpandButtonSize _expandButtonSize = ExpandButtonSize.Normal;
+
+        /// <summary>
+        /// Size preset of the expand-collapse button.
+        /// </summary>
+        [Category("ExpandCollapseButton")]
+        [Description("Size preset of the expand-collapse button.")]
+        [Browsable(true)]
+        public ExpandButtonSize ButtonSize
+        {
+            get { return _expandButtonSize; }
+            set
+            {
+                if (_expandButtonSize != value)
+                {
+                    InitButtonSize(value);
+                }
+            }
         }
 
-        public enum ExpandButtonStyle
+        /// <summary>
+        /// Resize and arrange child controls according to ButtonSize preset
+        /// </summary>
+        /// <param name="size">ButtonSize preset</param>
+        private void InitButtonSize(ExpandButtonSize size)
         {
-            Style1, Style2, Style3, Style4, Style5, Style6
+            _expandButtonSize = size;
+
+            switch (_expandButtonSize)
+            {
+                case ExpandButtonSize.Normal:
+                    pictureBox1.Location = new Point(0, 3);
+                    pictureBox1.Size = new Size(24, 24);
+                    lblLine.Location = new Point(30, 22);
+                    lblHeader.Location = new Point(30, 3);
+                    break;
+                case ExpandButtonSize.Large:
+                    pictureBox1.Location = new Point(0, 3);
+                    pictureBox1.Size = new Size(35, 35);
+                    lblLine.Location = new Point(41, 28);
+                    lblHeader.Location = new Point(41, 3);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
+        #endregion ExpandButtonStyles
+
+
+        
 
         /// <summary>
         /// Handle clicks from PictureBox and Header
