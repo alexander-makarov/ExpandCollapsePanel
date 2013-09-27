@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this._comboStyles = new System.Windows.Forms.ComboBox();
+            this.lblStyles = new System.Windows.Forms.Label();
+            this.lblBorder = new System.Windows.Forms.Label();
+            this._comboSizes = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.expandCollapsePanel1 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.advancedFlowLayoutPanel1 = new MakarovDev.ExpandCollapsePanel.AdvancedFlowLayoutPanel();
             this.expandCollapsePanel2 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
@@ -60,11 +65,6 @@
             this.button7 = new System.Windows.Forms.Button();
             this.expandCollapsePanel5 = new MakarovDev.ExpandCollapsePanel.ExpandCollapsePanel();
             this.button3 = new System.Windows.Forms.Button();
-            this._comboStyles = new System.Windows.Forms.ComboBox();
-            this.lblStyles = new System.Windows.Forms.Label();
-            this.lblBorder = new System.Windows.Forms.Label();
-            this._comboSizes = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.expandCollapsePanel1.SuspendLayout();
             this.advancedFlowLayoutPanel1.SuspendLayout();
             this.expandCollapsePanel2.SuspendLayout();
@@ -77,6 +77,56 @@
             this.expandCollapsePanel6.SuspendLayout();
             this.expandCollapsePanel5.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // _comboStyles
+            // 
+            this._comboStyles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._comboStyles.FormattingEnabled = true;
+            this._comboStyles.Location = new System.Drawing.Point(137, 548);
+            this._comboStyles.Name = "_comboStyles";
+            this._comboStyles.Size = new System.Drawing.Size(156, 21);
+            this._comboStyles.TabIndex = 1;
+            // 
+            // lblStyles
+            // 
+            this.lblStyles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblStyles.AutoSize = true;
+            this.lblStyles.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblStyles.Location = new System.Drawing.Point(23, 551);
+            this.lblStyles.Name = "lblStyles";
+            this.lblStyles.Size = new System.Drawing.Size(108, 13);
+            this.lblStyles.TabIndex = 2;
+            this.lblStyles.Text = "Expand button styles:";
+            // 
+            // lblBorder
+            // 
+            this.lblBorder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBorder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblBorder.Location = new System.Drawing.Point(0, 540);
+            this.lblBorder.Name = "lblBorder";
+            this.lblBorder.Size = new System.Drawing.Size(914, 1);
+            this.lblBorder.TabIndex = 3;
+            // 
+            // _comboSizes
+            // 
+            this._comboSizes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._comboSizes.FormattingEnabled = true;
+            this._comboSizes.Location = new System.Drawing.Point(460, 548);
+            this._comboSizes.Name = "_comboSizes";
+            this._comboSizes.Size = new System.Drawing.Size(156, 21);
+            this._comboSizes.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(346, 551);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Expand button sizes:";
             // 
             // expandCollapsePanel1
             // 
@@ -147,7 +197,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.Location = new System.Drawing.Point(34, 140);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(807, 54);
+            this.button6.Size = new System.Drawing.Size(841, 54);
             this.button6.TabIndex = 1;
             this.button6.Text = "Buttons with acnhors";
             this.button6.UseVisualStyleBackColor = true;
@@ -217,7 +267,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(34, 82);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(807, 200);
+            this.listView1.Size = new System.Drawing.Size(841, 200);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -350,13 +400,13 @@
             // 
             // expandCollapsePanel7
             // 
-            this.expandCollapsePanel7.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
-            this.expandCollapsePanel7.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this.expandCollapsePanel7.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Large;
+            this.expandCollapsePanel7.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.MagicArrow;
             this.expandCollapsePanel7.Controls.Add(this.button8);
             this.expandCollapsePanel7.IsExpanded = true;
             this.expandCollapsePanel7.Location = new System.Drawing.Point(515, 98);
             this.expandCollapsePanel7.Name = "expandCollapsePanel7";
-            this.expandCollapsePanel7.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel7.Size = new System.Drawing.Size(222, 89);
             this.expandCollapsePanel7.TabIndex = 1;
             this.expandCollapsePanel7.Text = "just a button";
             // 
@@ -367,7 +417,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button8.Location = new System.Drawing.Point(50, 44);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(169, 45);
+            this.button8.Size = new System.Drawing.Size(169, 43);
             this.button8.TabIndex = 1;
             this.button8.Text = "I\'m the button";
             this.button8.UseVisualStyleBackColor = true;
@@ -377,10 +427,10 @@
             this.expandCollapsePanel6.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
             this.expandCollapsePanel6.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
             this.expandCollapsePanel6.Controls.Add(this.button7);
-            this.expandCollapsePanel6.IsExpanded = true;
+            this.expandCollapsePanel6.IsExpanded = false;
             this.expandCollapsePanel6.Location = new System.Drawing.Point(287, 98);
             this.expandCollapsePanel6.Name = "expandCollapsePanel6";
-            this.expandCollapsePanel6.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel6.Size = new System.Drawing.Size(222, 46);
             this.expandCollapsePanel6.TabIndex = 1;
             this.expandCollapsePanel6.Text = "just a button";
             // 
@@ -391,7 +441,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.Location = new System.Drawing.Point(50, 44);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(169, 45);
+            this.button7.Size = new System.Drawing.Size(169, 0);
             this.button7.TabIndex = 1;
             this.button7.Text = "I\'m the button";
             this.button7.UseVisualStyleBackColor = true;
@@ -399,12 +449,12 @@
             // expandCollapsePanel5
             // 
             this.expandCollapsePanel5.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
-            this.expandCollapsePanel5.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this.expandCollapsePanel5.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Triangle;
             this.expandCollapsePanel5.Controls.Add(this.button3);
-            this.expandCollapsePanel5.IsExpanded = true;
+            this.expandCollapsePanel5.IsExpanded = false;
             this.expandCollapsePanel5.Location = new System.Drawing.Point(45, 98);
             this.expandCollapsePanel5.Name = "expandCollapsePanel5";
-            this.expandCollapsePanel5.Size = new System.Drawing.Size(222, 92);
+            this.expandCollapsePanel5.Size = new System.Drawing.Size(222, 46);
             this.expandCollapsePanel5.TabIndex = 1;
             this.expandCollapsePanel5.Text = "just a button";
             // 
@@ -415,60 +465,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(50, 44);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(169, 45);
+            this.button3.Size = new System.Drawing.Size(169, 0);
             this.button3.TabIndex = 1;
             this.button3.Text = "I\'m the button";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // _comboStyles
-            // 
-            this._comboStyles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._comboStyles.FormattingEnabled = true;
-            this._comboStyles.Location = new System.Drawing.Point(137, 548);
-            this._comboStyles.Name = "_comboStyles";
-            this._comboStyles.Size = new System.Drawing.Size(156, 21);
-            this._comboStyles.TabIndex = 1;
-            // 
-            // lblStyles
-            // 
-            this.lblStyles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblStyles.AutoSize = true;
-            this.lblStyles.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblStyles.Location = new System.Drawing.Point(23, 551);
-            this.lblStyles.Name = "lblStyles";
-            this.lblStyles.Size = new System.Drawing.Size(108, 13);
-            this.lblStyles.TabIndex = 2;
-            this.lblStyles.Text = "Expand button styles:";
-            // 
-            // lblBorder
-            // 
-            this.lblBorder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBorder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblBorder.Location = new System.Drawing.Point(0, 540);
-            this.lblBorder.Name = "lblBorder";
-            this.lblBorder.Size = new System.Drawing.Size(914, 1);
-            this.lblBorder.TabIndex = 3;
-            // 
-            // _comboSizes
-            // 
-            this._comboSizes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._comboSizes.FormattingEnabled = true;
-            this._comboSizes.Location = new System.Drawing.Point(460, 548);
-            this._comboSizes.Name = "_comboSizes";
-            this._comboSizes.Size = new System.Drawing.Size(156, 21);
-            this._comboSizes.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(346, 551);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Expand button sizes:";
             // 
             // Demo
             // 
