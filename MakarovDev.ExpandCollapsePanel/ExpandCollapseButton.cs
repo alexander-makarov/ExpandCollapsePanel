@@ -105,7 +105,7 @@ namespace MakarovDev.ExpandCollapsePanel
             InitializeComponent();
 
             #region initialize expanded/collapsed state bitmaps:
-            InitButtonStyle(ExpandButtonStyle.Style2);
+            InitButtonStyle(ExpandButtonStyle.Style5);
             #endregion
 
             // initial state of panel - collapsed
@@ -132,26 +132,44 @@ namespace MakarovDev.ExpandCollapsePanel
             {
                 case ExpandButtonStyle.Style1:
                     pictureBox1.Image = Properties.Resources._1downarrow1;
+                    pictureBox1.Location = new Point(0, 3);
+                    pictureBox1.Size = new Size(35, 35);
+                    lblLine.Location = new Point(41, 28);
+                    lblHeader.Location = new Point(41, 3);
                     break;
                 case ExpandButtonStyle.Style2:
                     var bmp = Properties.Resources.Upload;
                     bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
                     pictureBox1.Image = bmp;
+                    pictureBox1.Location = new Point(0, 3);
+                    pictureBox1.Size = new Size(35, 35);
+                    lblLine.Location = new Point(41, 28);
+                    lblHeader.Location = new Point(41, 3);
                     break;
                 case ExpandButtonStyle.Style3:
                     pictureBox1.Image = Properties.Resources.icon_expand;
+                    pictureBox1.Location = new Point(0, 3);
+                    pictureBox1.Size = new Size(35, 35);
+                    lblLine.Location = new Point(41, 28);
+                    lblHeader.Location = new Point(41, 3);
                     break;
                 case ExpandButtonStyle.Style4:
                     bmp = Properties.Resources.up_256;
                     bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
                     pictureBox1.Image = bmp;
+                    pictureBox1.Location = new Point(0, 3);
+                    pictureBox1.Size = new Size(35, 35);
+                    lblLine.Location = new Point(41, 28);
+                    lblHeader.Location = new Point(41, 3);
                     break;
-                //case ExpandButtonStyle.Style5:
-                //    bmp = Properties.Resources.icon_collapse2;
-                //    bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                //    pictureBox1.Size = new Size(24,24);
-                //    pictureBox1.Image = bmp;
-                //    break;
+                case ExpandButtonStyle.Style5:
+                    bmp = Properties.Resources._1downarrow1;
+                    pictureBox1.Image = bmp;
+                    pictureBox1.Location = new Point(0, 3);
+                    pictureBox1.Size = new Size(24, 24);
+                    lblLine.Location = new Point(30, 22);
+                    lblHeader.Location = new Point(30, 3);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException("style");
             }
