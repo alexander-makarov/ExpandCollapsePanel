@@ -113,6 +113,13 @@ namespace MakarovDev.ExpandCollapsePanel
         }
 
         private ExpandButtonStyle _expandButtonStyle = ExpandButtonStyle.Style1;
+
+        /// <summary>
+        /// Visual style of the expand-collapse button.
+        /// </summary>
+        [Category("ExpandCollapseButton")]
+        [Description("Visual style of the expand-collapse button.")]
+        [Browsable(true)]
         public ExpandButtonStyle ButtonStyle
         {
             get { return _expandButtonStyle; }
@@ -120,15 +127,16 @@ namespace MakarovDev.ExpandCollapsePanel
             {
                 if (_expandButtonStyle != value)
                 {
-                    _expandButtonStyle = value;
-                    InitButtonStyle(_expandButtonStyle);
+                    InitButtonStyle(value);
                 }
             }
         }
 
         private void InitButtonStyle(ExpandButtonStyle style)
         {
-            switch (style)
+            _expandButtonStyle = style;
+
+            switch (_expandButtonStyle)
             {
                 case ExpandButtonStyle.Style1:
                     pictureBox1.Image = Properties.Resources._1downarrow1;
