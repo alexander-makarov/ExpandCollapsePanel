@@ -64,6 +64,30 @@ namespace MakarovDev.ExpandCollapsePanel
         }
 
         /// <summary>
+        /// Visual style of the expand-collapse button.
+        /// </summary>
+        [Category("ExpandCollapsePanel")]
+        [Description("Visual style of the expand-collapse button.")]
+        [Browsable(true)]
+        public ExpandCollapseButton.ExpandButtonStyle ButtonStyle
+        {
+            get { return _btnExpandCollapse.ButtonStyle; }
+            set { _btnExpandCollapse.ButtonStyle = value; }
+        }
+
+        /// <summary>
+        /// Size preset of the expand-collapse button.
+        /// </summary>
+        [Category("ExpandCollapsePanel")]
+        [Description("Size preset of the expand-collapse button.")]
+        [Browsable(true)]
+        public ExpandCollapseButton.ExpandButtonSize ButtonSize
+        {
+            get { return _btnExpandCollapse.ButtonSize; }
+            set { _btnExpandCollapse.ButtonSize = value; }
+        }
+
+        /// <summary>
         /// AutoScroll property
         /// <remarks>Overridden only to hide from designer as mindless and useless</remarks>
         /// </summary>

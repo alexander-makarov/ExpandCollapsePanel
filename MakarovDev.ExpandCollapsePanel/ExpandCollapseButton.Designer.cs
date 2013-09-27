@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.lblLine = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblHeader = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,17 +46,6 @@
             this.lblLine.Text = "label1";
             this.lblLine.Click += new System.EventHandler(this.OnClick);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MakarovDev.ExpandCollapsePanel.Properties.Resources.icon_expand;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.OnClick);
-            // 
             // lblHeader
             // 
             this.lblHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -71,6 +60,17 @@
             this.lblHeader.TabIndex = 2;
             this.lblHeader.Text = "Заголовок";
             this.lblHeader.Click += new System.EventHandler(this.OnClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MakarovDev.ExpandCollapsePanel.Properties.Resources._1downarrow1;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.OnClick);
             // 
             // ExpandCollapseButton
             // 

@@ -57,6 +57,36 @@ namespace MakarovDev.ExpandCollapsePanel
                 //this.designerActionUISvc.Refresh(this.Component);
             }
         }
+
+        public ExpandCollapseButton.ExpandButtonStyle ButtonStyle
+        {
+            get
+            {
+                return panel.ButtonStyle;
+            }
+            set
+            {
+                GetPropertyByName("ButtonStyle").SetValue(panel, value);
+
+                // Refresh the list. 
+                //this.designerActionUISvc.Refresh(this.Component);
+            }
+        }
+
+        public ExpandCollapseButton.ExpandButtonSize ButtonSize
+        {
+            get
+            {
+                return panel.ButtonSize;
+            }
+            set
+            {
+                GetPropertyByName("ButtonSize").SetValue(panel, value);
+
+                // Refresh the list. 
+                //this.designerActionUISvc.Refresh(this.Component);
+            }
+        }
         
 
         // Implementation of this abstract method creates smart tag   
@@ -73,6 +103,12 @@ namespace MakarovDev.ExpandCollapsePanel
             items.Add(new DesignerActionPropertyItem("IsExpanded",
                                                      "IsExpanded", "Appearance",
                                                      "Expand/collapse the panel."));
+            items.Add(new DesignerActionPropertyItem("ButtonStyle",
+                                                     "ButtonStyle", "Appearance",
+                                                     "Visual style of the expand-collapse button."));
+            items.Add(new DesignerActionPropertyItem("ButtonSize",
+                                                     "ButtonSize", "Appearance",
+                                                     "Size preset of the expand-collapse button."));
 
             return items;
         }

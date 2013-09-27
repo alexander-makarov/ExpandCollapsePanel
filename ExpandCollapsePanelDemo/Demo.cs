@@ -6,22 +6,68 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MakarovDev.ExpandCollapsePanel;
 
 namespace ExpandCollapsePanelDemo
 {
     public partial class Demo : Form
     {
+        private readonly List<ExpandCollapsePanel> _panelsList = new List<ExpandCollapsePanel>();
         public Demo()
         {
             InitializeComponent();
 
-            // Attention! Unfortunately for correct handling need to set ExpandCollapsePanel control properties in code..
-            expandCollapsePanel1.IsExpanded = false;
-            expandCollapsePanel2.IsExpanded = false;
-            expandCollapsePanel3.IsExpanded = false;
-            expandCollapsePanel4.IsExpanded = false;
+            // make a list with all ExpandCollapsePanel controls for easy access:
+            _panelsList.AddRange(new []
+            {
+                expandCollapsePanel1,expandCollapsePanel2,expandCollapsePanel3,
+                expandCollapsePanel4,expandCollapsePanel5,expandCollapsePanel6,
+                expandCollapsePanel7,expandCollapsePanel8,expandCollapsePanel9,
+                expandCollapsePanel10
+            });
 
+            // Attention! Unfortunately for correct handling need to set ExpandCollapsePanel control properties in code..
+            foreach (var panel in _panelsList)
+            {
+                panel.IsExpanded = false; // collapse all panels
+            }
+
+            // only for main top panel make font Bold
             expandCollapsePanel1.Font = new Font(FontFamily.GenericSansSerif, 9f, FontStyle.Bold);
+
+            // initialize comboBox with ExpandButtonStyles:
+            var styles = Enum.GetNames(typeof (ExpandCollapseButton.ExpandButtonStyle));
+            _comboStyles.Items.AddRange(styles);
+            _comboStyles.SelectedValueChanged += ComboStylesOnSelectedValueChanged;
+            _comboStyles.SelectedIndex = 0;
+
+            // initialize comboBox with ExpandButtonSizes:
+            var sizes = Enum.GetNames(typeof(ExpandCollapseButton.ExpandButtonSize));
+            _comboSizes.Items.AddRange(sizes);
+            _comboSizes.SelectedValueChanged += ComboSizesOnSelectedValueChanged;
+            _comboSizes.SelectedIndex = 0;
+        }
+
+        private void ComboSizesOnSelectedValueChanged(object sender, EventArgs eventArgs)
+        {
+            var sizeStr = _comboSizes.SelectedItem as string;
+            var size = (ExpandCollapseButton.ExpandButtonSize)Enum.Parse(typeof(ExpandCollapseButton.ExpandButtonSize), sizeStr);
+
+            foreach (var panel in _panelsList)
+            {
+                panel.ButtonSize = size;
+            }
+        }
+
+        private void ComboStylesOnSelectedValueChanged(object sender, EventArgs eventArgs)
+        {
+            var styleStr = _comboStyles.SelectedItem as string;
+            var style = (ExpandCollapseButton.ExpandButtonStyle)Enum.Parse(typeof(ExpandCollapseButton.ExpandButtonStyle), styleStr);
+
+            foreach (var panel in _panelsList)
+            {
+                panel.ButtonStyle = style;
+            }
         }
 
         private void expandCollapsePanel1_ExpandCollapse(object sender, MakarovDev.ExpandCollapsePanel.ExpandCollapseEventArgs e)
@@ -34,16 +80,6 @@ namespace ExpandCollapsePanelDemo
             {
                 expandCollapsePanel1.Text = "Top expander. Click for expand the panel content and see more..";
             }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnExpandAll_Click(object sender, EventArgs e)
