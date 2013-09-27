@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace MakarovDev.ExpandCollapsePanel
@@ -108,7 +109,7 @@ namespace MakarovDev.ExpandCollapsePanel
             _collapsed = pictureBox1.Image;
 
             // expanded bitmap is rotated collapsed bitmap:
-            _expanded = new Bitmap(pictureBox1.Image);
+            _expanded = MakeGrayscale3(pictureBox1.Image);
             _expanded.RotateFlip(RotateFlipType.Rotate180FlipNone);
             #endregion
 
@@ -134,11 +135,55 @@ namespace MakarovDev.ExpandCollapsePanel
         {
             // set appropriate bitmap
             pictureBox1.Image = _isExpanded ? _expanded : _collapsed;
+            //lblHeader.ForeColor = _isExpanded ? Color.DarkGray : Color.SteelBlue;
 
             // and fire the event:
             EventHandler<ExpandCollapseEventArgs> handler = ExpandCollapse;
             if (handler != null)
                 handler(this, new ExpandCollapseEventArgs(_isExpanded));
+        }
+
+        /// <summary>
+        /// Utillity method for createing a grayscale copy of image
+        /// </summary>
+        /// <param name="original">original image</param>
+        /// <returns>grayscale copy of image</returns>
+        public static Bitmap MakeGrayscale3(Image original)
+        {
+            // create a blank bitmap the same size as original
+            var newBitmap = new Bitmap(original.Width, original.Height);
+
+            // get a graphics object from the new image
+            using (var g = Graphics.FromImage(newBitmap))
+            {
+
+                // create the grayscale ColorMatrix
+                var colorMatrix = new ColorMatrix(
+                    new float[][]
+                        {
+                            new float[] {.3f, .3f, .3f, 0, 0},
+                            new float[] {.59f, .59f, .59f, 0, 0},
+                            new float[] {.11f, .11f, .11f, 0, 0},
+                            new float[] {0, 0, 0, 1, 0},
+                            new float[] {0, 0, 0, 0, 1}
+                        });
+
+                // create some image attributes
+                var attributes = new ImageAttributes();
+
+                // set the color matrix attribute
+                attributes.SetColorMatrix(colorMatrix);
+
+                // draw the original image on the new image
+                // using the grayscale color matrix
+                g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height),
+                            0, 0, original.Width, original.Height, GraphicsUnit.Pixel, attributes);
+
+                // dispose the Graphics object
+                g.Dispose();
+            }
+
+            return newBitmap;
         }
     }
 }
