@@ -184,7 +184,7 @@ namespace MakarovDev.ExpandCollapsePanel
         }
         #endregion ExpandButtonStyles
 
-        #region ExpandButtonStyles
+        #region ExpandButtonSizes
         /// <summary>
         /// Size presets of the expand-collapse button.
         /// </summary>
@@ -239,10 +239,10 @@ namespace MakarovDev.ExpandCollapsePanel
                     throw new ArgumentOutOfRangeException();
             }
         }
-        #endregion ExpandButtonStyles
+        #endregion ExpandButtonSizes
 
 
-        
+
 
         /// <summary>
         /// Handle clicks from PictureBox and Header
