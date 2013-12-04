@@ -119,6 +119,7 @@ namespace MakarovDev.ExpandCollapsePanel
         /// </summary>
         public enum ExpandButtonStyle
         {
+            Classic,
             Circle,
             MagicArrow,
             Triangle,
@@ -167,6 +168,11 @@ namespace MakarovDev.ExpandCollapsePanel
                     bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
                     pictureBox1.Image = bmp;
                     break;
+                case ExpandButtonStyle.Classic:
+                    bmp = Properties.Resources.icon_struct_hide_collapsed;
+                    bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                    pictureBox1.Image = bmp;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException("style");
             }
@@ -190,6 +196,7 @@ namespace MakarovDev.ExpandCollapsePanel
         /// </summary>
         public enum ExpandButtonSize
         {
+            Small,
             Normal,
             Large
         }
@@ -223,6 +230,12 @@ namespace MakarovDev.ExpandCollapsePanel
 
             switch (_expandButtonSize)
             {
+                case ExpandButtonSize.Small:
+                    pictureBox1.Location = new Point(0, 3);
+                    pictureBox1.Size = new Size(16, 16);
+                    lblLine.Location = new Point(20, 18);
+                    lblHeader.Location = new Point(20, 1);
+                    break;
                 case ExpandButtonSize.Normal:
                     pictureBox1.Location = new Point(0, 3);
                     pictureBox1.Size = new Size(24, 24);
@@ -238,6 +251,9 @@ namespace MakarovDev.ExpandCollapsePanel
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            // after resize all child controls - do resize for entire ExpandCollapseButton control:
+            Height = pictureBox1.Location.Y + pictureBox1.Height + 2;
         }
         #endregion ExpandButtonSizes
 
