@@ -288,6 +288,7 @@ namespace MakarovDev.ExpandCollapsePanel
             _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right,
                 _btnExpandCollapse.Height);
 
+            // ignore height changing from animation timer
             if(_internalPanelState != InternalPanelState.Normal)
                 return;
 
