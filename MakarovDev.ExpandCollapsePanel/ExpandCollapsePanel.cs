@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows.Forms;
 
 namespace MakarovDev.ExpandCollapsePanel
@@ -31,6 +28,24 @@ namespace MakarovDev.ExpandCollapsePanel
         /// </summary>
         private readonly int _collapsedHeight;
 
+        /// <summary>
+        /// Height of panel in expanded state
+        /// </summary>
+        [Category("ExpandCollapsePanel")]
+        [Description("Height of panel in expanded state")]
+        [Browsable(true)]
+        public int ExpandedHeight
+        {
+            get { return _expandedHeight; }
+            set
+            {
+                _expandedHeight = value;
+                if (IsExpanded)
+                {
+                    Height = _expandedHeight;
+                }
+            }
+        }
 
         /// <summary>
         /// Set flag for expand or collapse panel content

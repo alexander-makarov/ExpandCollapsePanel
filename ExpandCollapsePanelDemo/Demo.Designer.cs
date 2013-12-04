@@ -137,6 +137,7 @@
             this.expandCollapsePanel1.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
             this.expandCollapsePanel1.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
             this.expandCollapsePanel1.Controls.Add(this.advancedFlowLayoutPanel1);
+            this.expandCollapsePanel1.ExpandedHeight = 0;
             this.expandCollapsePanel1.IsExpanded = true;
             this.expandCollapsePanel1.Location = new System.Drawing.Point(12, 12);
             this.expandCollapsePanel1.Name = "expandCollapsePanel1";
@@ -173,6 +174,7 @@
             this.expandCollapsePanel2.Controls.Add(this.button4);
             this.expandCollapsePanel2.Controls.Add(this.button2);
             this.expandCollapsePanel2.Controls.Add(this.button1);
+            this.expandCollapsePanel2.ExpandedHeight = 0;
             this.expandCollapsePanel2.IsExpanded = true;
             this.expandCollapsePanel2.Location = new System.Drawing.Point(3, 3);
             this.expandCollapsePanel2.Name = "expandCollapsePanel2";
@@ -197,7 +199,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.Location = new System.Drawing.Point(34, 140);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(841, 54);
+            this.button6.Size = new System.Drawing.Size(740, 54);
             this.button6.TabIndex = 1;
             this.button6.Text = "Buttons with acnhors";
             this.button6.UseVisualStyleBackColor = true;
@@ -245,6 +247,7 @@
             this.expandCollapsePanel3.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
             this.expandCollapsePanel3.Controls.Add(this.listView1);
             this.expandCollapsePanel3.Controls.Add(this.comboBox1);
+            this.expandCollapsePanel3.ExpandedHeight = 0;
             this.expandCollapsePanel3.IsExpanded = true;
             this.expandCollapsePanel3.Location = new System.Drawing.Point(3, 217);
             this.expandCollapsePanel3.Name = "expandCollapsePanel3";
@@ -267,7 +270,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(34, 82);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(841, 200);
+            this.listView1.Size = new System.Drawing.Size(740, 200);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -299,6 +302,7 @@
             this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel7);
             this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel6);
             this.expandCollapsePanel4.Controls.Add(this.expandCollapsePanel5);
+            this.expandCollapsePanel4.ExpandedHeight = 0;
             this.expandCollapsePanel4.IsExpanded = true;
             this.expandCollapsePanel4.Location = new System.Drawing.Point(3, 542);
             this.expandCollapsePanel4.Name = "expandCollapsePanel4";
@@ -331,6 +335,7 @@
             this.expandCollapsePanel10.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
             this.expandCollapsePanel10.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
             this.expandCollapsePanel10.Controls.Add(this.button11);
+            this.expandCollapsePanel10.ExpandedHeight = 0;
             this.expandCollapsePanel10.IsExpanded = true;
             this.expandCollapsePanel10.Location = new System.Drawing.Point(515, 209);
             this.expandCollapsePanel10.Name = "expandCollapsePanel10";
@@ -355,6 +360,7 @@
             this.expandCollapsePanel9.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
             this.expandCollapsePanel9.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
             this.expandCollapsePanel9.Controls.Add(this.button10);
+            this.expandCollapsePanel9.ExpandedHeight = 0;
             this.expandCollapsePanel9.IsExpanded = true;
             this.expandCollapsePanel9.Location = new System.Drawing.Point(287, 209);
             this.expandCollapsePanel9.Name = "expandCollapsePanel9";
@@ -379,6 +385,7 @@
             this.expandCollapsePanel8.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
             this.expandCollapsePanel8.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
             this.expandCollapsePanel8.Controls.Add(this.button9);
+            this.expandCollapsePanel8.ExpandedHeight = 0;
             this.expandCollapsePanel8.IsExpanded = true;
             this.expandCollapsePanel8.Location = new System.Drawing.Point(45, 209);
             this.expandCollapsePanel8.Name = "expandCollapsePanel8";
@@ -403,6 +410,7 @@
             this.expandCollapsePanel7.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Large;
             this.expandCollapsePanel7.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.MagicArrow;
             this.expandCollapsePanel7.Controls.Add(this.button8);
+            this.expandCollapsePanel7.ExpandedHeight = 0;
             this.expandCollapsePanel7.IsExpanded = true;
             this.expandCollapsePanel7.Location = new System.Drawing.Point(515, 98);
             this.expandCollapsePanel7.Name = "expandCollapsePanel7";
@@ -427,10 +435,11 @@
             this.expandCollapsePanel6.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
             this.expandCollapsePanel6.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
             this.expandCollapsePanel6.Controls.Add(this.button7);
-            this.expandCollapsePanel6.IsExpanded = false;
+            this.expandCollapsePanel6.ExpandedHeight = 319;
+            this.expandCollapsePanel6.IsExpanded = true;
             this.expandCollapsePanel6.Location = new System.Drawing.Point(287, 98);
             this.expandCollapsePanel6.Name = "expandCollapsePanel6";
-            this.expandCollapsePanel6.Size = new System.Drawing.Size(222, 46);
+            this.expandCollapsePanel6.Size = new System.Drawing.Size(222, 87);
             this.expandCollapsePanel6.TabIndex = 1;
             this.expandCollapsePanel6.Text = "just a button";
             // 
@@ -441,7 +450,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.Location = new System.Drawing.Point(50, 44);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(169, 0);
+            this.button7.Size = new System.Drawing.Size(169, 41);
             this.button7.TabIndex = 1;
             this.button7.Text = "I\'m the button";
             this.button7.UseVisualStyleBackColor = true;
@@ -451,10 +460,11 @@
             this.expandCollapsePanel5.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
             this.expandCollapsePanel5.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Triangle;
             this.expandCollapsePanel5.Controls.Add(this.button3);
-            this.expandCollapsePanel5.IsExpanded = false;
+            this.expandCollapsePanel5.ExpandedHeight = 319;
+            this.expandCollapsePanel5.IsExpanded = true;
             this.expandCollapsePanel5.Location = new System.Drawing.Point(45, 98);
             this.expandCollapsePanel5.Name = "expandCollapsePanel5";
-            this.expandCollapsePanel5.Size = new System.Drawing.Size(222, 46);
+            this.expandCollapsePanel5.Size = new System.Drawing.Size(222, 87);
             this.expandCollapsePanel5.TabIndex = 1;
             this.expandCollapsePanel5.Text = "just a button";
             // 
@@ -465,7 +475,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(50, 44);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(169, 0);
+            this.button3.Size = new System.Drawing.Size(169, 41);
             this.button3.TabIndex = 1;
             this.button3.Text = "I\'m the button";
             this.button3.UseVisualStyleBackColor = true;
