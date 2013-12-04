@@ -28,30 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._btnExpandCollapse = new MakarovDev.ExpandCollapsePanel.ExpandCollapseButton();
+            this.animationTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // _btnExpandCollapse
             // 
             this._btnExpandCollapse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnExpandCollapse.AutoSize = false;
+            this._btnExpandCollapse.ButtonSize = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonSize.Normal;
+            this._btnExpandCollapse.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
+            this._btnExpandCollapse.IsExpanded = false;
             this._btnExpandCollapse.Location = new System.Drawing.Point(3, 3);
+            this._btnExpandCollapse.MaximumSize = new System.Drawing.Size(0, 40);
+            this._btnExpandCollapse.MinimumSize = new System.Drawing.Size(150, 40);
             this._btnExpandCollapse.Name = "_btnExpandCollapse";
             this._btnExpandCollapse.Size = new System.Drawing.Size(359, 40);
             this._btnExpandCollapse.TabIndex = 0;
+            // 
+            // animationTimer
+            // 
+            this.animationTimer.Interval = 50;
+            this.animationTimer.Tick += new System.EventHandler(this.animationTimer_Tick);
             // 
             // ExpandCollapsePanel
             // 
             this.Controls.Add(this._btnExpandCollapse);
             this.Size = new System.Drawing.Size(365, 319);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private MakarovDev.ExpandCollapsePanel.ExpandCollapseButton _btnExpandCollapse;
+        private System.Windows.Forms.Timer animationTimer;
     }
 }

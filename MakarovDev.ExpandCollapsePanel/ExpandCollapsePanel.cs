@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -19,6 +20,11 @@ namespace MakarovDev.ExpandCollapsePanel
         private Size _previousParentSize = Size.Empty;
 
         /// <summary>
+        /// Enable pretty simple animation of panel on expanding or collapsing
+        /// </summary>
+        private bool _useAnimation = true;
+
+        /// <summary>
         /// Height of panel in expanded state
         /// </summary>
         private int _expandedHeight;
@@ -32,7 +38,7 @@ namespace MakarovDev.ExpandCollapsePanel
         /// Height of panel in expanded state
         /// </summary>
         [Category("ExpandCollapsePanel")]
-        [Description("Height of panel in expanded state")]
+        [Description("Height of panel in expanded state.")]
         [Browsable(true)]
         public int ExpandedHeight
         {
@@ -70,12 +76,24 @@ namespace MakarovDev.ExpandCollapsePanel
         /// Header of panel
         /// </summary>
         [Category("ExpandCollapsePanel")]
-        [Description("Header")]
+        [Description("Header of panel.")]
         [Browsable(true)]
         public override string Text
         {
             get { return _btnExpandCollapse.Text; }
             set { _btnExpandCollapse.Text = value; }
+        }
+
+        /// <summary>
+        /// Enable pretty simple animation of panel on expanding or collapsing
+        /// </summary>
+        [Category("ExpandCollapsePanel")]
+        [Description("Enable pretty simple animation of panel on expanding or collapsing.")]
+        [Browsable(true)]
+        public bool UseAnimation
+        {
+            get { return _useAnimation; }
+            set { _useAnimation = value; }
         }
 
         /// <summary>
@@ -155,7 +173,8 @@ namespace MakarovDev.ExpandCollapsePanel
         [Category("ExpandCollapsePanel")]
         [Description("Occurs when the panel has expanded or collapsed.")]
         [Browsable(true)]
-        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse; 
+        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;
+
 
         /// <summary>
         /// Constructor
@@ -203,15 +222,28 @@ namespace MakarovDev.ExpandCollapsePanel
             if (handler != null)
                 handler(this, e);
         }
- 
 
         /// <summary>
         /// Expand panel content
         /// </summary>
         protected virtual void Expand()
         {
-            // resize panel
-            Size = new Size(Size.Width, _expandedHeight);
+            // if animation enabled
+            if (UseAnimation)
+            {
+                // set internal state for Expanding
+                _internalPanelState = InternalPanelState.Expanding;
+                // start animation now..
+                StartAnimation();
+            }
+            else // no animation, just expand immediately
+            {
+                // set internal state to Normal
+                _internalPanelState = InternalPanelState.Normal;
+                // resize panel
+                Size = new Size(Size.Width, _expandedHeight);
+
+            }
         }
 
         /// <summary>
@@ -219,13 +251,30 @@ namespace MakarovDev.ExpandCollapsePanel
         /// </summary>
         protected virtual void Collapse()
         {
-            // store current panel height in expanded state
-            _expandedHeight = Size.Height;
+            // if panel is completely expanded (animation on expanding is ended or no animation at all) 
+            // *we don't want store half-expanded panel height
+            if (_internalPanelState == InternalPanelState.Normal)
+            {
+                // store current panel height in expanded state
+                _expandedHeight = Size.Height;
+            }
 
-            // resize panel
-            Size = new Size(Size.Width, _collapsedHeight);
+            // if animation enabled
+            if (UseAnimation)
+            {
+                // set internal state for Collapsing
+                _internalPanelState = InternalPanelState.Collapsing;
+                // start animation now..
+                StartAnimation();
+            }
+            else // no animation, just collapse immediately
+            {
+                // set internal state to Normal
+                _internalPanelState = InternalPanelState.Normal;
+                // resize panel
+                Size = new Size(Size.Width, _collapsedHeight);
+            }
         }
-
 
         /// <summary>
         /// Handle panel resize event
@@ -238,6 +287,9 @@ namespace MakarovDev.ExpandCollapsePanel
             // we always manually scale expand-collapse button for filling the horizontal space of panel:
             _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right,
                 _btnExpandCollapse.Height);
+
+            if(_internalPanelState != InternalPanelState.Normal)
+                return;
 
             #region Handling panel's Anchor property sets to Bottom when panel collapsed
 
@@ -258,5 +310,161 @@ namespace MakarovDev.ExpandCollapsePanel
                 _previousParentSize = Parent.Size;
             #endregion
         }
+
+        #region Animation Code
+        //	---------------------------------------------------------------------------------------
+        //	The original source of this animation technique was written by
+        //	Daren May for his Collapsible Panel implementation which can
+        //	be found here:
+        //		http://www.codeproject.com/cs/miscctrl/xpgroupbox.asp
+        //   
+        //	Although I found that piece of code in very good XPPanel implementation by Tom Guinther:
+        //		http://www.codeproject.com/Articles/7332/Full-featured-XP-Style-Collapsible-Panel
+        //  I have simplified things quite a bit, nothing is fundamentally different. 
+        //  So I give many thanks to both for solving this problem.
+        //	---------------------------------------------------------------------------------------
+
+        // degree to adjust the height of the panel when animating
+        private int _animationHeightAdjustment = 0;
+        // current opacity level
+        private int _animationOpacity = 0;
+
+        /// <summary>
+        /// Initialize animation values and start the timer
+        /// </summary>
+        private void StartAnimation()
+        {
+            _animationHeightAdjustment = 1;
+            _animationOpacity = 5;
+            animationTimer.Interval = 50;
+            animationTimer.Enabled = true;
+        }
+
+        private void animationTimer_Tick(object sender, System.EventArgs e)
+        {
+            //	---------------------------------------------------------------
+            //	Gradually reduce the interval between timer events so that the
+            //	animation begins slowly and eventually accelerates to completion
+            //	---------------------------------------------------------------
+            if (animationTimer.Interval > 10)
+            {
+                animationTimer.Interval -= 10;
+            }
+            else
+            {
+                _animationHeightAdjustment += 2;
+            }
+
+            // Increase transparency as we collapse
+            if ((_animationOpacity + 5) < byte.MaxValue)
+            {
+                _animationOpacity += 5;
+            }
+
+            int currOpacity = _animationOpacity;
+
+            switch (_internalPanelState)
+            {
+                case InternalPanelState.Expanding:
+                    // still room to expand?
+                    if ((Height + _animationHeightAdjustment) < _expandedHeight)
+                    {
+                        Height += _animationHeightAdjustment;
+                    }
+                    else
+                    {
+                        // we are done so we dont want any transparency
+                        currOpacity = byte.MaxValue;
+                        Height = _expandedHeight;
+                        _internalPanelState = InternalPanelState.Normal;
+                    }
+                    break;
+
+                case InternalPanelState.Collapsing:
+                    // still something to collapse
+                    if ((Height - _animationHeightAdjustment) > _collapsedHeight)
+                    {
+                        Height -= _animationHeightAdjustment;
+                        // continue decreasing opacity
+                        currOpacity = byte.MaxValue - _animationOpacity;
+                    }
+                    else
+                    {
+                        // we are done so we dont want any transparency
+                        currOpacity = byte.MaxValue;
+                        Height = _collapsedHeight;
+                        _internalPanelState = InternalPanelState.Normal;
+                    }
+                    break;
+
+                default:
+                    return;
+            }
+
+            // set the opacity for all the controls on the XPPanel
+            SetControlsOpacity(currOpacity);
+
+            // are we done?
+            if (_internalPanelState == InternalPanelState.Normal)
+            {
+                animationTimer.Enabled = false;
+            }
+
+            Invalidate();
+        }
+
+        /// <summary>
+        /// Changes the transparency of controls based upon the height of the XPPanel
+        /// </summary>
+        /// <remarks>
+        /// Only used during animation
+        /// </remarks>
+        private void SetControlsOpacity(int opacity)
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c.Visible)
+                {
+                    try
+                    {
+                        if (c.BackColor != Color.Transparent)
+                        {
+                            c.BackColor = Color.FromArgb(opacity, c.BackColor);
+                        }
+                        // ignore exception from controls that do not support transparent background color
+                    }
+                    catch
+                    {
+                    }
+                    c.ForeColor = Color.FromArgb(opacity, c.ForeColor);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Internal state of panel used for checking that panel is animating now
+        /// </summary>
+        private InternalPanelState _internalPanelState;
+
+        /// <summary>
+        /// Internal state of panel
+        /// </summary>
+        private enum InternalPanelState
+        {
+            /// <summary>
+            /// No animation, completely expanded or collapsed
+            /// </summary>
+            Normal,
+            /// <summary>
+            /// Expanding animation
+            /// </summary>
+            Expanding,
+            /// <summary>
+            /// Collapsing animation
+            /// </summary>
+            Collapsing
+        }
+
+        #endregion Animation Code
     }
 }

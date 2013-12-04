@@ -199,9 +199,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.Location = new System.Drawing.Point(34, 140);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(740, 54);
+            this.button6.Size = new System.Drawing.Size(757, 54);
             this.button6.TabIndex = 1;
-            this.button6.Text = "Buttons with acnhors";
+            this.button6.Text = "Button with acnhors";
             this.button6.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -270,7 +270,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(34, 82);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(740, 200);
+            this.listView1.Size = new System.Drawing.Size(757, 200);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
