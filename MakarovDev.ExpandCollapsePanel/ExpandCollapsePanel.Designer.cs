@@ -41,10 +41,7 @@
             this._btnExpandCollapse.ButtonStyle = MakarovDev.ExpandCollapsePanel.ExpandCollapseButton.ExpandButtonStyle.Circle;
             this._btnExpandCollapse.IsExpanded = false;
             this._btnExpandCollapse.Location = new System.Drawing.Point(3, 3);
-            this._btnExpandCollapse.MaximumSize = new System.Drawing.Size(0, 40);
-            this._btnExpandCollapse.MinimumSize = new System.Drawing.Size(150, 40);
             this._btnExpandCollapse.Name = "_btnExpandCollapse";
-            this._btnExpandCollapse.Size = new System.Drawing.Size(359, 40);
             this._btnExpandCollapse.TabIndex = 0;
             // 
             // animationTimer
