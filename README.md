@@ -12,4 +12,4 @@ P.S. I think, library is imperfect and incomplete in some respects. But in gener
 On the links below you can find some screenshots of the demo application:
  - Easy editing in Form Designer - http://oi39.tinypic.com/m4kmu.jpg
  - Put any control that you want into the content region - http://oi42.tinypic.com/11jn6ko.jpg
- - Apply different styles and sizes - http://oi40.tinypic.com/2vvt6o5.jpg
+ - Apply different styles and sizes - http://oi39.tinypic.com/110yqux.jpg
