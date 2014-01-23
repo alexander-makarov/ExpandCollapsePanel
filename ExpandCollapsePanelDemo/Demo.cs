@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using MakarovDev.ExpandCollapsePanel;
 
@@ -29,7 +25,9 @@ namespace ExpandCollapsePanelDemo
             // Attention! Unfortunately for correct handling need to set ExpandCollapsePanel control properties in code..
             foreach (var panel in _panelsList)
             {
+                panel.UseAnimation = false; // disable animation for immediately collapsing
                 panel.IsExpanded = false; // collapse all panels
+                panel.UseAnimation = true; // enable animation for further user clicks
             }
 
             // only for main top panel make font Bold

@@ -80,7 +80,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblLine);
             this.MaximumSize = new System.Drawing.Size(0, 40);
-            this.MinimumSize = new System.Drawing.Size(150, 40);
             this.Name = "ExpandCollapseButton";
             this.Size = new System.Drawing.Size(150, 40);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
