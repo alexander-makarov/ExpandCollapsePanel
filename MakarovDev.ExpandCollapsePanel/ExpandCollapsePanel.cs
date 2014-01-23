@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Text;
 using System.Windows.Forms;
 
 namespace MakarovDev.ExpandCollapsePanel
@@ -65,10 +67,10 @@ namespace MakarovDev.ExpandCollapsePanel
         public bool IsExpanded
         {
             get { return _btnExpandCollapse.IsExpanded; }
-            set 
-            { 
-                if(_btnExpandCollapse.IsExpanded != value)
-                    _btnExpandCollapse.IsExpanded = value; 
+            set
+            {
+                if (_btnExpandCollapse.IsExpanded != value)
+                    _btnExpandCollapse.IsExpanded = value;
             }
         }
 
@@ -198,7 +200,7 @@ namespace MakarovDev.ExpandCollapsePanel
             _btnExpandCollapse.IsExpanded = true;
             // subscribe for button expand-collapse state changed event
             _btnExpandCollapse.ExpandCollapse += BtnExpandCollapseExpandCollapse;
-         
+
         }
 
         /// <summary>
@@ -235,6 +237,7 @@ namespace MakarovDev.ExpandCollapsePanel
                 _internalPanelState = InternalPanelState.Expanding;
                 // start animation now..
                 StartAnimation();
+
             }
             else // no animation, just expand immediately
             {
@@ -242,8 +245,10 @@ namespace MakarovDev.ExpandCollapsePanel
                 _internalPanelState = InternalPanelState.Normal;
                 // resize panel
                 Size = new Size(Size.Width, _expandedHeight);
-
             }
+
+            // in any case we need to show inner controls
+            SetVisibleForAllInnerControls(true);
         }
 
         /// <summary>
@@ -273,6 +278,8 @@ namespace MakarovDev.ExpandCollapsePanel
                 _internalPanelState = InternalPanelState.Normal;
                 // resize panel
                 Size = new Size(Size.Width, _collapsedHeight);
+                // hide inner controls
+                SetVisibleForAllInnerControls(false);
             }
         }
 
@@ -288,7 +295,8 @@ namespace MakarovDev.ExpandCollapsePanel
             _btnExpandCollapse.Size = new Size(ClientSize.Width - _btnExpandCollapse.Margin.Left - _btnExpandCollapse.Margin.Right,
                 _btnExpandCollapse.Height);
 
-            if(_internalPanelState != InternalPanelState.Normal)
+            // ignore height changing from animation timer
+            if (_internalPanelState != InternalPanelState.Normal)
                 return;
 
             #region Handling panel's Anchor property sets to Bottom when panel collapsed
@@ -306,7 +314,7 @@ namespace MakarovDev.ExpandCollapsePanel
             }
 
             // store previous size of parent control (however we need only height)
-            if(Parent != null)
+            if (Parent != null)
                 _previousParentSize = Parent.Size;
             #endregion
         }
@@ -390,10 +398,12 @@ namespace MakarovDev.ExpandCollapsePanel
                     }
                     else
                     {
-                        // we are done so we dont want any transparency
+                        // we are done so we don't want any transparency
                         currOpacity = byte.MaxValue;
                         Height = _collapsedHeight;
                         _internalPanelState = InternalPanelState.Normal;
+                        // after all hide inner controls
+                        SetVisibleForAllInnerControls(false);
                     }
                     break;
 
@@ -442,9 +452,23 @@ namespace MakarovDev.ExpandCollapsePanel
         }
 
         /// <summary>
+        /// Iterating through all inner controls of ExpandCollapsePanel
+        /// and setting Visible property with defined value
+        /// </summary>
+        /// <param name="isVisible">defined value of inner controls Visible property</param>
+        private void SetVisibleForAllInnerControls(bool isVisible)
+        {
+            foreach (Control control in Controls)
+            {
+                if (control != _btnExpandCollapse)
+                    control.Visible = isVisible;
+            }
+        }
+
+        /// <summary>
         /// Internal state of panel used for checking that panel is animating now
         /// </summary>
-        private InternalPanelState _internalPanelState;
+        private InternalPanelState _internalPanelState = InternalPanelState.Normal;
 
         /// <summary>
         /// Internal state of panel

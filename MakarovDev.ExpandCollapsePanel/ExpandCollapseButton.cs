@@ -98,8 +98,8 @@ namespace MakarovDev.ExpandCollapsePanel
         [Category("ExpandCollapseButton")]
         [Description("Occurs when the button has expanded or collapsed.")]
         [Browsable(true)]
-        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;   
-        
+        public event EventHandler<ExpandCollapseEventArgs> ExpandCollapse;
+
         public ExpandCollapseButton()
         {
             InitializeComponent();
