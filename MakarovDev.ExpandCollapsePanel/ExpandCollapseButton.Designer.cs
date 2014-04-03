@@ -1,4 +1,5 @@
-﻿namespace MakarovDev.ExpandCollapsePanel
+﻿using System.Windows.Forms;
+namespace MakarovDev.ExpandCollapsePanel
 {
     partial class ExpandCollapseButton
     {
@@ -44,7 +45,7 @@
             this.lblLine.Size = new System.Drawing.Size(382, 1);
             this.lblLine.TabIndex = 0;
             this.lblLine.Text = "label1";
-            this.lblLine.Click += new System.EventHandler(this.OnClick);
+            this.lblLine.MouseDown += new MouseEventHandler(this.OnMouseDown);
             // 
             // lblHeader
             // 
@@ -59,7 +60,7 @@
             this.lblHeader.Size = new System.Drawing.Size(68, 15);
             this.lblHeader.TabIndex = 2;
             this.lblHeader.Text = "Заголовок";
-            this.lblHeader.Click += new System.EventHandler(this.OnClick);
+            this.lblHeader.MouseDown += new MouseEventHandler(this.OnMouseDown);
             // 
             // pictureBox1
             // 
@@ -70,7 +71,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.OnClick);
+            this.pictureBox1.MouseDown += new MouseEventHandler(this.OnMouseDown);
             // 
             // ExpandCollapseButton
             // 
