@@ -265,7 +265,7 @@ namespace MakarovDev.ExpandCollapsePanel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected virtual void OnClick(object sender, EventArgs e)
+        protected virtual void OnMouseDown(object sender, EventArgs e)
         {
             // just invert current state
             IsExpanded = !IsExpanded;
