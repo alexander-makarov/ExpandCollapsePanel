@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputPath>..\bin</OutputPath>
-		<TargetFramework>net48</TargetFramework>
+		<IntermediateOutputPath>..\bin\int</IntermediateOutputPath>
+		<TargetFrameworks>net472;net48;net60-windows</TargetFrameworks>
 		<UseWindowsForms>true</UseWindowsForms>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 		<Copyright>Alexander Makarov - [makarov.dev@gmail.com] - 2013</Copyright>
@@ -9,7 +10,7 @@
 	<ItemGroup>
 		<PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
 	</ItemGroup>
-	<ItemGroup>
+	<ItemGroup Condition="$(TargetFramework)!='net60-windows'">
 	  <Reference Include="System.Design" />
 	</ItemGroup>
 </Project>

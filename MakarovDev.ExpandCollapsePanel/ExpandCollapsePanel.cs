@@ -9,7 +9,9 @@ namespace MakarovDev.ExpandCollapsePanel
     /// <summary>
     /// The ExpandCollapsePanel control displays a header that has a collapsible window that displays content.
     /// </summary>
+#if NETFRAMEWORK
     [Designer(typeof(ExpandCollapsePanelDesigner))]
+#endif
     public partial class ExpandCollapsePanel : Panel
     {
         /// <summary>
