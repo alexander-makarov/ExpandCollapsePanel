@@ -199,7 +199,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.Location = new System.Drawing.Point(34, 140);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(757, 54);
+            this.button6.Size = new System.Drawing.Size(730, 54);
             this.button6.TabIndex = 1;
             this.button6.Text = "Button with acnhors";
             this.button6.UseVisualStyleBackColor = true;
@@ -270,7 +270,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(34, 82);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(757, 200);
+            this.listView1.Size = new System.Drawing.Size(774, 200);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -491,6 +491,7 @@
             this.Controls.Add(this.lblStyles);
             this.Controls.Add(this._comboStyles);
             this.Controls.Add(this.expandCollapsePanel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Demo";
             this.Text = "ExpandCollapsePanel Control Demo";
             this.expandCollapsePanel1.ResumeLayout(false);

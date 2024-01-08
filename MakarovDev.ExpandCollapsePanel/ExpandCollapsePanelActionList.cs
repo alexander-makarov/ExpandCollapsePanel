@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 
 namespace MakarovDev.ExpandCollapsePanel
 {
+#if NETFRAMEWORK
     /// <summary>
     /// DesignerActionList-derived class defines smart tag entries and resultant actions. 
     /// <remarks>http://msdn.microsoft.com/en-us/library/ms171829.aspx</remarks>
@@ -88,7 +89,6 @@ namespace MakarovDev.ExpandCollapsePanel
             }
         }
         
-
         // Implementation of this abstract method creates smart tag   
         // items, associates their targets, and collects into list. 
         public override DesignerActionItemCollection GetSortedActionItems()
@@ -113,4 +113,5 @@ namespace MakarovDev.ExpandCollapsePanel
             return items;
         }
     }
+#endif
 }

@@ -1,111 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE76A6FE-225F-4287-9CA0-231F5AF4CDC1}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MakarovDev.ExpandCollapsePanel</RootNamespace>
-    <AssemblyName>MakarovDev.ExpandCollapsePanel</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AdvancedFlowLayoutPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ExpandCollapseButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ExpandCollapseButton.Designer.cs">
-      <DependentUpon>ExpandCollapseButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExpandCollapseEventArgs.cs" />
-    <Compile Include="ExpandCollapsePanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ExpandCollapsePanel.Designer.cs">
-      <DependentUpon>ExpandCollapsePanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExpandCollapsePanelActionList.cs" />
-    <Compile Include="ExpandCollapsePanelDesigner.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="AdvancedFlowLayoutPanel.resx">
-      <DependentUpon>AdvancedFlowLayoutPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExpandCollapseButton.resx">
-      <DependentUpon>ExpandCollapseButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExpandCollapsePanel.resx">
-      <DependentUpon>ExpandCollapsePanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon-expand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1downarrow1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Upload.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\up_256.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Expand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_struct_hide_collapsed.png" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputPath>..\bin</OutputPath>
+		<IntermediateOutputPath>..\bin\int</IntermediateOutputPath>
+		<TargetFrameworks>net472;net48;net60-windows</TargetFrameworks>
+		<UseWindowsForms>true</UseWindowsForms>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+		<Copyright>Alexander Makarov - [makarov.dev@gmail.com] - 2013</Copyright>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
+	</ItemGroup>
+	<ItemGroup Condition="$(TargetFramework)!='net60-windows'">
+	  <Reference Include="System.Design" />
+	</ItemGroup>
 </Project>
