@@ -1,5 +1,5 @@
 # ExpandCollapsePanel
-====================
+
 ExpandCollapsePanel is WinForms control that provides similar UX to WPF Expander control. It displays a header that has a collapsible area with content. 
 
 There are two projects, the first is the library itself and the second one is a demo application.
@@ -12,7 +12,7 @@ There are two projects, the first is the library itself and the second one is a 
 
 ## Features:
 ### 1) Easy editing in Form Designer
- <img src="static/expandcollapsepanel-forms-designer.png" width="700">
+<img src="static/expandcollapsepanel-forms-designer.png" width="700">
 
 ### 2) Put any control that you want into the content region
  <img src="static/expandcollapsepanel-child-controls.png" width="700">
