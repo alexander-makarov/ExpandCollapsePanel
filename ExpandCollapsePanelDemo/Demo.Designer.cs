@@ -312,7 +312,7 @@
             // 
             // btnCollapseAll
             // 
-            this.btnCollapseAll.Location = new System.Drawing.Point(142, 45);
+            this.btnCollapseAll.Location = new System.Drawing.Point(142, 49);
             this.btnCollapseAll.Name = "btnCollapseAll";
             this.btnCollapseAll.Size = new System.Drawing.Size(90, 29);
             this.btnCollapseAll.TabIndex = 2;
@@ -322,7 +322,7 @@
             // 
             // btnExpandAll
             // 
-            this.btnExpandAll.Location = new System.Drawing.Point(46, 45);
+            this.btnExpandAll.Location = new System.Drawing.Point(46, 49);
             this.btnExpandAll.Name = "btnExpandAll";
             this.btnExpandAll.Size = new System.Drawing.Size(90, 29);
             this.btnExpandAll.TabIndex = 2;
@@ -348,9 +348,9 @@
             this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.Location = new System.Drawing.Point(50, 44);
+            this.button11.Location = new System.Drawing.Point(50, 48);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(169, 45);
+            this.button11.Size = new System.Drawing.Size(169, 41);
             this.button11.TabIndex = 1;
             this.button11.Text = "I\'m the button";
             this.button11.UseVisualStyleBackColor = true;
@@ -373,9 +373,9 @@
             this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(50, 44);
+            this.button10.Location = new System.Drawing.Point(50, 48);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(169, 45);
+            this.button10.Size = new System.Drawing.Size(169, 41);
             this.button10.TabIndex = 1;
             this.button10.Text = "I\'m the button";
             this.button10.UseVisualStyleBackColor = true;
@@ -398,9 +398,9 @@
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.Location = new System.Drawing.Point(50, 44);
+            this.button9.Location = new System.Drawing.Point(50, 48);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(169, 45);
+            this.button9.Size = new System.Drawing.Size(169, 41);
             this.button9.TabIndex = 1;
             this.button9.Text = "I\'m the button";
             this.button9.UseVisualStyleBackColor = true;
@@ -414,7 +414,7 @@
             this.expandCollapsePanel7.IsExpanded = true;
             this.expandCollapsePanel7.Location = new System.Drawing.Point(515, 98);
             this.expandCollapsePanel7.Name = "expandCollapsePanel7";
-            this.expandCollapsePanel7.Size = new System.Drawing.Size(222, 89);
+            this.expandCollapsePanel7.Size = new System.Drawing.Size(222, 92);
             this.expandCollapsePanel7.TabIndex = 1;
             this.expandCollapsePanel7.Text = "just a button";
             // 
@@ -423,9 +423,9 @@
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.Location = new System.Drawing.Point(50, 44);
+            this.button8.Location = new System.Drawing.Point(50, 48);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(169, 43);
+            this.button8.Size = new System.Drawing.Size(169, 41);
             this.button8.TabIndex = 1;
             this.button8.Text = "I\'m the button";
             this.button8.UseVisualStyleBackColor = true;
@@ -439,7 +439,7 @@
             this.expandCollapsePanel6.IsExpanded = true;
             this.expandCollapsePanel6.Location = new System.Drawing.Point(287, 98);
             this.expandCollapsePanel6.Name = "expandCollapsePanel6";
-            this.expandCollapsePanel6.Size = new System.Drawing.Size(222, 87);
+            this.expandCollapsePanel6.Size = new System.Drawing.Size(222, 92);
             this.expandCollapsePanel6.TabIndex = 1;
             this.expandCollapsePanel6.Text = "just a button";
             // 
@@ -448,7 +448,7 @@
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(50, 44);
+            this.button7.Location = new System.Drawing.Point(50, 48);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(169, 41);
             this.button7.TabIndex = 1;
@@ -464,7 +464,7 @@
             this.expandCollapsePanel5.IsExpanded = true;
             this.expandCollapsePanel5.Location = new System.Drawing.Point(45, 98);
             this.expandCollapsePanel5.Name = "expandCollapsePanel5";
-            this.expandCollapsePanel5.Size = new System.Drawing.Size(222, 87);
+            this.expandCollapsePanel5.Size = new System.Drawing.Size(222, 92);
             this.expandCollapsePanel5.TabIndex = 1;
             this.expandCollapsePanel5.Text = "just a button";
             // 
@@ -473,7 +473,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(50, 44);
+            this.button3.Location = new System.Drawing.Point(50, 48);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(169, 41);
             this.button3.TabIndex = 1;
@@ -561,4 +561,3 @@
         private System.Windows.Forms.Label label1;
     }
 }
-
